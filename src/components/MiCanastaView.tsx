@@ -696,7 +696,7 @@ export const MiCanastaView: React.FC = () => {
                 <div className="text-[10px] text-slate-500">Cadena comercial con merma inflada</div>
               </div>
               <div className="p-3 rounded-xl bg-white">
-                <div className="text-[10px] font-semibold text-[#006948] uppercase tracking-wider">Tu Canasta Local</div>
+                <div className="text-[10px] font-semibold text-[#006948] uppercase tracking-wider">Tu Canastita</div>
                 <div className="text-lg font-extrabold text-[#006948]">{money(cartTotalCanastaLocal)}</div>
                 <div className="text-[10px] text-[#006948]">Cosecha directa del tianguis</div>
               </div>

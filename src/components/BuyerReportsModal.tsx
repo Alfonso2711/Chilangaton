@@ -383,7 +383,7 @@ export const BuyerReportsModal: React.FC<BuyerReportsModalProps> = ({
                     <strong className="text-slate-700 font-semibold">{report.adminName}</strong>
                   </span>
                   <span className="text-[10px] text-slate-400 font-mono">
-                    CanastaLocal CDMX · Folio Oficial SEDECO
+                    Canastita CDMX · Folio Oficial SEDECO
                   </span>
                 </div>
               </div>

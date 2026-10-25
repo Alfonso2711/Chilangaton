@@ -102,18 +102,12 @@ export const Header: React.FC = () => {
               )}
             </div>
             <div className="flex flex-col">
-              <span className="font-extrabold text-xl tracking-tight text-slate-900 leading-none">
-                Canas
-                <span
-                  className={
-                    isAdmin
-                      ? 'text-purple-700'
-                      : isVendedor
-                      ? 'text-amber-600'
-                      : 'text-emerald-600'
-                  }
-                >
-                  tita
+              <span className="font-extrabold text-xl tracking-tight text-slate-900 leading-none flex items-center gap-1">
+                <span>Canastita</span>
+                <span className={`text-[10px] font-black uppercase px-1.5 py-0.5 rounded-md ${
+                  isAdmin ? 'bg-purple-100 text-purple-800' : isVendedor ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-[#006948]'
+                }`}>
+                  CDMX
                 </span>
               </span>
               <span className="text-[11px] font-semibold text-slate-500 flex items-center gap-1 mt-0.5">

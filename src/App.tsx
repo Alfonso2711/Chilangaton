@@ -119,7 +119,7 @@ const MainContent: React.FC = () => {
               }`}
             >
               <ShoppingBag className="w-4 h-4" />
-              <span>Canasta</span>
+              <span>Canastita</span>
               {cartCount > 0 && (
                 <span className="absolute -top-1.5 -right-2 min-w-4 h-4 px-1 rounded-full bg-orange-500 text-white text-[9px] font-extrabold flex items-center justify-center">
                   {cartCount}

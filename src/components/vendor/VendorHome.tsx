@@ -66,7 +66,7 @@ export const VendorHome: React.FC<{ onPreview: () => void }> = ({ onPreview }) =
   const toggleStore = () => {
     setStoreActive((v) => !v);
     setRecentNotification(
-      storeActive ? 'Tu puesto aparece como "En pausa" para los vecinos' : '¡Tu puesto vuelve a estar activo en CanastaLocal!'
+      storeActive ? 'Tu puesto aparece como "En pausa" para los vecinos' : '¡Tu puesto vuelve a estar activo en Canastita!'
     );
     window.setTimeout(() => setRecentNotification(null), 3000);
   };

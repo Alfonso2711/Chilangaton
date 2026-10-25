@@ -529,7 +529,7 @@ const AddProductModal: React.FC<{
         <div className="flex items-start justify-between gap-2">
           <div>
             <h3 className="text-lg font-bold text-slate-900">Agregar producto nuevo</h3>
-            <p className="text-xs text-slate-500">Aparecerá de inmediato en tu puesto público de CanastaLocal.</p>
+            <p className="text-xs text-slate-500">Aparecerá de inmediato en tu puesto público de Canastita.</p>
           </div>
           <button type="button" onClick={onClose} className="w-8 h-8 rounded-full hover:bg-slate-100 text-slate-500 flex items-center justify-center" aria-label="Cerrar">
             <X className="w-5 h-5" />

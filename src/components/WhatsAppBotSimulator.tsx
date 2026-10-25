@@ -136,7 +136,7 @@ export const WhatsAppBotSimulator: React.FC = () => {
                 </div>
                 <div>
                   <div className="font-bold text-sm leading-tight flex items-center gap-1.5">
-                    MarchanteBot · CanastaLocal
+                    MarchanteBot · Canastita
                     <span className="w-2 h-2 rounded-full bg-emerald-300 inline-block animate-pulse"></span>
                   </div>
                   <div className="text-[11px] text-emerald-100/90 font-medium">

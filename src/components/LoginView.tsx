@@ -111,7 +111,7 @@ export const LoginView: React.FC = () => {
             <ShoppingBag className="w-7 h-7" />
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
-            Canas<span className="text-emerald-600">tita</span> CDMX
+            Canastita <span className="text-emerald-600">CDMX</span>
           </h1>
         </div>
 
