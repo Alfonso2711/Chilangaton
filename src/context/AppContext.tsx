@@ -213,7 +213,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   useEffect(() => {
     if (!currentUser) return;
-    if (currentUser.role === 'admin' && activeView !== 'gobierno_b2g') {
+    if (currentUser.role === 'admin' && activeView !== 'gobierno_b2g' && activeView !== 'admin_territorial') {
       setActiveView('gobierno_b2g');
     } else if (currentUser.role === 'cliente' && activeView !== 'comprador' && activeView !== 'mercados_mapa') {
       setActiveView('comprador');

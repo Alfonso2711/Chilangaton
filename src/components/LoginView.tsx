@@ -46,11 +46,11 @@ export const LoginView: React.FC = () => {
       accentColor: 'from-purple-600 to-indigo-700',
       borderHover: 'hover:border-purple-500 focus:border-purple-600',
       icon: Building2,
-      accessBadge: 'Pantalla exclusiva: SEDECO B2G',
+      accessBadge: 'Pantallas: SEDECO B2G & Padrón Barrial',
       screens: [
-        'Panel de Inteligencia Económica B2G',
-        'Monitoreo de 339 Mercados y 1,367 Tianguis',
-        'Dispersión y Pre-calificación FONDESO',
+        'Panel B2G: Precios Multicanal & Canasta Básica',
+        'Padrón Territorial: Mercados, Tianguis y Comercio Barrial',
+        'Directorio con datos de contacto de supervisores SEDECO',
       ],
       description:
         'Perfil institucional para funcionarios y analistas de desarrollo económico del Gobierno de la CDMX.',

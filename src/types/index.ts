@@ -135,7 +135,7 @@ export interface WhatsAppMessage {
   parsedData?: VoiceInventoryParseResult;
 }
 
-export type ActiveAppView = 'comprador' | 'locatario' | 'whatsapp_bot' | 'gobierno_b2g' | 'mercados_mapa';
+export type ActiveAppView = 'comprador' | 'locatario' | 'whatsapp_bot' | 'gobierno_b2g' | 'mercados_mapa' | 'admin_territorial';
 
 export type UserRole = 'admin' | 'cliente' | 'vendedor';
 
@@ -149,4 +149,88 @@ export interface User {
   badgeText: string;
   organization?: string;
 }
+
+export interface PriceRange {
+  min: number;
+  max: number;
+}
+
+export interface SedecoPriceItem {
+  id: string;
+  productName: string;
+  category: string;
+  unit: string;
+  mercadosPublicos: PriceRange;
+  mercadosMoviles: PriceRange;
+  mercadosSobreRuedas: PriceRange;
+  centrosComerciales: PriceRange;
+  calculatedAverage: number;
+  spreadVsSupermarketPct: number;
+  tendency: 'baja' | 'estable' | 'alta';
+  updatedAt: string;
+}
+
+export interface AdminAssignment {
+  id: string;
+  adminId: string;
+  adminName: string;
+  adminRole: string;
+  email: string;
+  phone: string;
+  alcaldia: string;
+  zone: string;
+  assignedMarkets: string[];
+  assignedTianguis: string[];
+  assignedComerciosCount: number;
+  reportsCount: number;
+  status: 'al_corriente' | 'inspeccion_pendiente' | 'alerta';
+}
+
+export interface BuyerReport {
+  id: string;
+  folio: string;
+  adminId: string;
+  adminName: string;
+  buyerName: string;
+  buyerPhone?: string;
+  vendorName: string;
+  stallNumber?: string;
+  venueName: string;
+  alcaldia: string;
+  incidentType:
+    | 'Báscula no calibrada / Kilos incompletos'
+    | 'No respetar precio exhibido / Sobreprecio'
+    | 'Producto en mal estado / Falta de higiene'
+    | 'Negativa de venta o condicionamiento'
+    | 'Mala conducta / Acoso en pasillo'
+    | 'Incumplimiento de horario o reglamento';
+  severity: 'alta' | 'media' | 'baja';
+  description: string;
+  status: 'pendiente' | 'en_investigacion' | 'inspector_asignado' | 'resuelto' | 'sancionado';
+  createdAt: string;
+}
+
+
+export interface ComercioBarrialItem {
+  id: string;
+  name: string;
+  type: 'Mercado Público' | 'Tianguis Sobre Ruedas' | 'Comercio Popular Local';
+  venueName: string;
+  alcaldia: string;
+  colonia: string;
+  stallNumber: string;
+  category: string;
+  ownerName: string;
+  phone: string;
+  trustLevel: number;
+  assignedAdminId: string;
+  assignedAdminName: string;
+  assignedAdminEmail: string;
+  assignedAdminPhone: string;
+  assignedAdminZone: string;
+  status: 'activo' | 'en_regularizacion' | 'sin_incidencias';
+  updatedAt: string;
+}
+
+
 

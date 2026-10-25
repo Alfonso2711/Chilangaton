@@ -7,6 +7,7 @@ import { MarketsExplorer } from './components/MarketsExplorer';
 import { WhatsAppBotSimulator } from './components/WhatsAppBotSimulator';
 import { LocatarioDashboard } from './components/LocatarioDashboard';
 import { B2GDashboard } from './components/B2GDashboard';
+import { AdminTerritorialView } from './components/AdminTerritorialView';
 import { CartDrawer } from './components/CartDrawer';
 import { StallDetailModal } from './components/StallDetailModal';
 import {
@@ -16,6 +17,7 @@ import {
   Building2,
   ShieldCheck,
   Heart,
+  Users,
 } from 'lucide-react';
 
 const MainContent: React.FC = () => {
@@ -61,11 +63,16 @@ const MainContent: React.FC = () => {
           </>
         )}
 
-        {/* ADMIN VIEW */}
+        {/* ADMIN VIEWS */}
         {isAdmin && (
-          activeView === 'gobierno_b2g' && (
-            <B2GDashboard />
-          )
+          <>
+            {activeView === 'gobierno_b2g' && (
+              <B2GDashboard />
+            )}
+            {activeView === 'admin_territorial' && (
+              <AdminTerritorialView />
+            )}
+          </>
         )}
       </main>
 
@@ -120,15 +127,27 @@ const MainContent: React.FC = () => {
         )}
 
         {isAdmin && (
-          <button
-            onClick={() => setActiveView('gobierno_b2g')}
-            className={`flex flex-col items-center gap-1 ${
-              activeView === 'gobierno_b2g' ? 'text-purple-700' : 'text-slate-400'
-            }`}
-          >
-            <Building2 className="w-4 h-4" />
-            <span>SEDECO B2G</span>
-          </button>
+          <>
+            <button
+              onClick={() => setActiveView('gobierno_b2g')}
+              className={`flex flex-col items-center gap-1 ${
+                activeView === 'gobierno_b2g' ? 'text-purple-700' : 'text-slate-400'
+              }`}
+            >
+              <Building2 className="w-4 h-4" />
+              <span>SEDECO B2G</span>
+            </button>
+
+            <button
+              onClick={() => setActiveView('admin_territorial')}
+              className={`flex flex-col items-center gap-1 ${
+                activeView === 'admin_territorial' ? 'text-purple-700' : 'text-slate-400'
+              }`}
+            >
+              <Users className="w-4 h-4" />
+              <span>Padrón Barrial</span>
+            </button>
+          </>
         )}
       </div>
 

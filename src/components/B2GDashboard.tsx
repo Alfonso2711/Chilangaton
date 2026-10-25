@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { B2G_METRICS } from '../data/mockData';
+import { SedecoPriceTable } from './SedecoPriceTable';
 import {
   Building2,
   TrendingDown,
@@ -19,58 +20,6 @@ import {
 
 export const B2GDashboard: React.FC = () => {
   const [selectedAlcaldiaView, setSelectedAlcaldiaView] = useState<string>('todas');
-
-  const inflationMonitor = [
-    {
-      product: 'Jitomate Saladet',
-      mercadoAvg: 23.5,
-      superAvg: 41.9,
-      spreadPct: -43.9,
-      tendency: 'baja',
-      alert: false,
-    },
-    {
-      product: 'Aguacate Hass',
-      mercadoAvg: 53.0,
-      superAvg: 89.0,
-      spreadPct: -40.4,
-      tendency: 'estable',
-      alert: false,
-    },
-    {
-      product: 'Limón con Semilla',
-      mercadoAvg: 28.0,
-      superAvg: 51.0,
-      spreadPct: -45.1,
-      tendency: 'alta',
-      alert: true,
-      alertNote: 'Alerta de estacionalidad: Subió +$4 en 12 tianguis de Iztapalapa y GAM',
-    },
-    {
-      product: 'Pechuga de Pollo',
-      mercadoAvg: 118.0,
-      superAvg: 172.0,
-      spreadPct: -31.4,
-      tendency: 'estable',
-      alert: false,
-    },
-    {
-      product: 'Huevo Blanco (Cono 30)',
-      mercadoAvg: 77.0,
-      superAvg: 97.5,
-      spreadPct: -21.0,
-      tendency: 'estable',
-      alert: false,
-    },
-    {
-      product: 'Queso Oaxaca (kg)',
-      mercadoAvg: 138.0,
-      superAvg: 195.0,
-      spreadPct: -29.2,
-      tendency: 'estable',
-      alert: false,
-    },
-  ];
 
   const alcaldiaActivity = [
     { name: 'Cuauhtémoc', mercados: 39, tianguis: 168, activeLocatarios: 890, salesMonth: '$3.4M MXN', fondesoQualified: 94 },
@@ -161,71 +110,8 @@ export const B2GDashboard: React.FC = () => {
         </div>
       </div>
 
-      {/* Inflation & Price Spread Monitor (Vital for SEDECO) */}
-      <section className="bg-white border border-slate-200 rounded-3xl p-5 sm:p-7 shadow-xs space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
-          <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-extrabold text-purple-800 uppercase tracking-wider">
-              <TrendingDown className="w-3.5 h-3.5" />
-              Monitor de Precios & Canasta Básica Popular
-            </div>
-            <h2 className="text-lg font-bold text-slate-900 mt-0.5">
-              Diferencial de Precios en Vivo: Tianguis / Mercados vs Supermercados
-            </h2>
-          </div>
-          <div className="text-xs text-slate-400">
-            Actualización continua con datos de MarchanteBot
-          </div>
-        </div>
-
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
-            <thead>
-              <tr className="border-b border-slate-200 text-slate-400 font-bold uppercase tracking-wider text-[10px]">
-                <th className="py-2.5 px-3">Producto Esencial</th>
-                <th className="py-2.5 px-3">Precio Promedio Mercado/Tianguis</th>
-                <th className="py-2.5 px-3">Precio Promedio Supermercado</th>
-                <th className="py-2.5 px-3">Diferencial Ahorro</th>
-                <th className="py-2.5 px-3">Tendencia</th>
-                <th className="py-2.5 px-3">Alerta Temprana SEDECO</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              {inflationMonitor.map((item, idx) => (
-                <tr key={idx} className="hover:bg-slate-50/70 transition-colors">
-                  <td className="py-3 px-3 font-bold text-slate-900">
-                    {item.product}
-                  </td>
-                  <td className="py-3 px-3 font-bold text-emerald-700 font-mono text-sm">
-                    ${item.mercadoAvg.toFixed(2)} MXN
-                  </td>
-                  <td className="py-3 px-3 text-slate-500 font-mono line-through">
-                    ${item.superAvg.toFixed(2)} MXN
-                  </td>
-                  <td className="py-3 px-3">
-                    <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-extrabold text-[11px]">
-                      {item.spreadPct}%
-                    </span>
-                  </td>
-                  <td className="py-3 px-3 text-[11px] font-semibold text-slate-700">
-                    {item.tendency === 'baja' ? '📉 A la baja' : item.tendency === 'alta' ? '📈 Presión al alza' : '➡️ Estable'}
-                  </td>
-                  <td className="py-3 px-3">
-                    {item.alert ? (
-                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-amber-100 text-amber-900 font-bold text-[10px]">
-                        <AlertTriangle className="w-3.5 h-3.5 text-amber-700" />
-                        {item.alertNote}
-                      </span>
-                    ) : (
-                      <span className="text-[11px] text-slate-400">Sin anomalías</span>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
+      {/* SEDECO Multichannel Price Monitor & Averages Management */}
+      <SedecoPriceTable />
 
       {/* Formalization Progress & SEDECO Heatmap Stats */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">

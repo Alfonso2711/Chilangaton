@@ -15,6 +15,7 @@ import {
   ShieldCheck,
   Building2,
   LogOut,
+  Users,
 } from 'lucide-react';
 
 export const Header: React.FC = () => {
@@ -304,18 +305,33 @@ export const Header: React.FC = () => {
 
           {/* ADMIN ROLE VIEWS */}
           {isAdmin && (
-            <button
-              onClick={() => setActiveView('gobierno_b2g')}
-              className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
-                activeView === 'gobierno_b2g'
-                  ? 'bg-purple-900 text-white shadow-sm shadow-purple-900/20'
-                  : 'text-purple-700 bg-purple-50 hover:bg-purple-100'
-              }`}
-              title="Panel de Inteligencia Económica para SEDECO CDMX"
-            >
-              <Building2 className="w-3.5 h-3.5" />
-              <span>SEDECO B2G</span>
-            </button>
+            <>
+              <button
+                onClick={() => setActiveView('gobierno_b2g')}
+                className={`px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                  activeView === 'gobierno_b2g'
+                    ? 'bg-purple-900 text-white shadow-sm shadow-purple-900/20'
+                    : 'text-purple-700 bg-purple-50 hover:bg-purple-100'
+                }`}
+                title="Panel de Inteligencia Económica para SEDECO CDMX"
+              >
+                <Building2 className="w-3.5 h-3.5" />
+                <span>SEDECO B2G</span>
+              </button>
+
+              <button
+                onClick={() => setActiveView('admin_territorial')}
+                className={`px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                  activeView === 'admin_territorial'
+                    ? 'bg-purple-900 text-white shadow-sm shadow-purple-900/20'
+                    : 'text-purple-700 bg-purple-50 hover:bg-purple-100'
+                }`}
+                title="Padrón y Supervisión Territorial de Mercados, Tianguis y Comercio Barrial"
+              >
+                <Users className="w-3.5 h-3.5" />
+                <span>Padrón Barrial</span>
+              </button>
+            </>
           )}
 
           {/* User Profile Pill & Logout Button */}
