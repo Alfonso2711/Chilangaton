@@ -136,3 +136,17 @@ export interface WhatsAppMessage {
 }
 
 export type ActiveAppView = 'comprador' | 'locatario' | 'whatsapp_bot' | 'gobierno_b2g' | 'mercados_mapa';
+
+export type UserRole = 'admin' | 'cliente' | 'vendedor';
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  role: UserRole;
+  title: string;
+  avatar: string;
+  badgeText: string;
+  organization?: string;
+}
+

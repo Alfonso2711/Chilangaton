@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AppProvider, useApp } from './context/AppContext';
 import { Header } from './components/Header';
+import { LoginView } from './components/LoginView';
 import { MarketplaceView } from './components/MarketplaceView';
 import { MarketsExplorer } from './components/MarketsExplorer';
 import { WhatsAppBotSimulator } from './components/WhatsAppBotSimulator';
@@ -15,97 +16,126 @@ import {
   Building2,
   ShieldCheck,
   Heart,
-  Sparkles,
 } from 'lucide-react';
 
 const MainContent: React.FC = () => {
-  const { activeView, setActiveView, selectedStallId, setSelectedStallId } = useApp();
+  const { currentUser, activeView, setActiveView, selectedStallId, setSelectedStallId } = useApp();
+
+  // If no user is logged in, show the Login screen
+  if (!currentUser) {
+    return <LoginView />;
+  }
+
+  const isCliente = currentUser.role === 'cliente';
+  const isVendedor = currentUser.role === 'vendedor';
+  const isAdmin = currentUser.role === 'admin';
 
   return (
     <div className="min-h-screen flex flex-col bg-[#faf8ff] text-[#131b2e]">
       {/* Top Navbar */}
       <Header />
 
-      {/* Main Content Area */}
+      {/* Main Content Area segregated by user role */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
-        {activeView === 'comprador' && (
-          <MarketplaceView onOpenStall={(stallId) => setSelectedStallId(stallId)} />
+        {/* CLIENTE VIEWS */}
+        {isCliente && (
+          <>
+            {activeView === 'comprador' && (
+              <MarketplaceView onOpenStall={(stallId) => setSelectedStallId(stallId)} />
+            )}
+            {activeView === 'mercados_mapa' && (
+              <MarketsExplorer />
+            )}
+          </>
         )}
 
-        {activeView === 'mercados_mapa' && (
-          <MarketsExplorer />
+        {/* VENDEDOR VIEWS */}
+        {isVendedor && (
+          <>
+            {activeView === 'locatario' && (
+              <LocatarioDashboard />
+            )}
+            {activeView === 'whatsapp_bot' && (
+              <WhatsAppBotSimulator />
+            )}
+          </>
         )}
 
-        {activeView === 'whatsapp_bot' && (
-          <WhatsAppBotSimulator />
-        )}
-
-        {activeView === 'locatario' && (
-          <LocatarioDashboard />
-        )}
-
-        {activeView === 'gobierno_b2g' && (
-          <B2GDashboard />
+        {/* ADMIN VIEW */}
+        {isAdmin && (
+          activeView === 'gobierno_b2g' && (
+            <B2GDashboard />
+          )
         )}
       </main>
 
-      {/* Bottom Sticky Mobile Navigation for Quick Role Switching */}
+      {/* Bottom Sticky Mobile Navigation - Adapted to role */}
       <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 py-2 px-3 flex md:hidden items-center justify-around text-[10px] font-bold">
-        <button
-          onClick={() => setActiveView('comprador')}
-          className={`flex flex-col items-center gap-1 ${
-            activeView === 'comprador' ? 'text-emerald-700' : 'text-slate-400'
-          }`}
-        >
-          <Store className="w-4 h-4" />
-          <span>Comprar</span>
-        </button>
+        {isCliente && (
+          <>
+            <button
+              onClick={() => setActiveView('comprador')}
+              className={`flex flex-col items-center gap-1 ${
+                activeView === 'comprador' ? 'text-emerald-700' : 'text-slate-400'
+              }`}
+            >
+              <Store className="w-4 h-4" />
+              <span>Comprar</span>
+            </button>
 
-        <button
-          onClick={() => setActiveView('mercados_mapa')}
-          className={`flex flex-col items-center gap-1 ${
-            activeView === 'mercados_mapa' ? 'text-emerald-700' : 'text-slate-400'
-          }`}
-        >
-          <MapPin className="w-4 h-4" />
-          <span>Tianguis</span>
-        </button>
+            <button
+              onClick={() => setActiveView('mercados_mapa')}
+              className={`flex flex-col items-center gap-1 ${
+                activeView === 'mercados_mapa' ? 'text-emerald-700' : 'text-slate-400'
+              }`}
+            >
+              <MapPin className="w-4 h-4" />
+              <span>Tianguis</span>
+            </button>
+          </>
+        )}
 
-        <button
-          onClick={() => setActiveView('whatsapp_bot')}
-          className={`flex flex-col items-center gap-1 ${
-            activeView === 'whatsapp_bot' ? 'text-emerald-700' : 'text-slate-400'
-          }`}
-        >
-          <MessageSquare className="w-4 h-4 text-emerald-600" />
-          <span>MarchanteBot</span>
-        </button>
+        {isVendedor && (
+          <>
+            <button
+              onClick={() => setActiveView('locatario')}
+              className={`flex flex-col items-center gap-1 ${
+                activeView === 'locatario' ? 'text-amber-700' : 'text-slate-400'
+              }`}
+            >
+              <ShieldCheck className="w-4 h-4" />
+              <span>Mi Puesto</span>
+            </button>
 
-        <button
-          onClick={() => setActiveView('locatario')}
-          className={`flex flex-col items-center gap-1 ${
-            activeView === 'locatario' ? 'text-emerald-700' : 'text-slate-400'
-          }`}
-        >
-          <ShieldCheck className="w-4 h-4" />
-          <span>Mi Puesto</span>
-        </button>
+            <button
+              onClick={() => setActiveView('whatsapp_bot')}
+              className={`flex flex-col items-center gap-1 ${
+                activeView === 'whatsapp_bot' ? 'text-emerald-700' : 'text-slate-400'
+              }`}
+            >
+              <MessageSquare className="w-4 h-4 text-emerald-600" />
+              <span>MarchanteBot</span>
+            </button>
+          </>
+        )}
 
-        <button
-          onClick={() => setActiveView('gobierno_b2g')}
-          className={`flex flex-col items-center gap-1 ${
-            activeView === 'gobierno_b2g' ? 'text-purple-700' : 'text-slate-400'
-          }`}
-        >
-          <Building2 className="w-4 h-4" />
-          <span>SEDECO</span>
-        </button>
+        {isAdmin && (
+          <button
+            onClick={() => setActiveView('gobierno_b2g')}
+            className={`flex flex-col items-center gap-1 ${
+              activeView === 'gobierno_b2g' ? 'text-purple-700' : 'text-slate-400'
+            }`}
+          >
+            <Building2 className="w-4 h-4" />
+            <span>SEDECO B2G</span>
+          </button>
+        )}
       </div>
 
-      {/* Global Modals & Drawers */}
-      <CartDrawer />
+      {/* Global Modals & Drawers - Cart is only for Cliente */}
+      {isCliente && <CartDrawer />}
 
-      {selectedStallId && (
+      {isCliente && selectedStallId && (
         <StallDetailModal
           stallId={selectedStallId}
           onClose={() => setSelectedStallId(null)}
@@ -148,6 +178,7 @@ const MainContent: React.FC = () => {
     </div>
   );
 };
+
 
 export default function App() {
   return (

@@ -10,6 +10,8 @@ import {
   DayOfWeek,
   VoiceInventoryParseResult,
   TrustProfile,
+  User,
+  UserRole,
 } from '../types';
 import {
   INITIAL_MARKETS,
@@ -19,7 +21,43 @@ import {
 } from '../data/mockData';
 import { parseMerchantAudioOrText } from '../services/geminiNlp';
 
+export const MOCK_USERS: Record<UserRole, User> = {
+  admin: {
+    id: 'user-admin-1',
+    name: 'Lic. Roberto Armenta',
+    email: 'admin@sedeco.cdmx.gob.mx',
+    role: 'admin',
+    title: 'Dirección General de Abasto y Comercio Popular',
+    organization: 'SEDECO CDMX',
+    badgeText: 'Administrador SEDECO',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=250',
+  },
+  cliente: {
+    id: 'user-cliente-1',
+    name: 'Sofía Morales',
+    email: 'sofia.morales@gmail.com',
+    role: 'cliente',
+    title: 'Consumidora Barrial',
+    organization: 'Comunidad Roma-Condesa',
+    badgeText: 'Usuario Cliente',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=250',
+  },
+  vendedor: {
+    id: 'user-vendedor-1',
+    name: 'Doña Mary Hernández',
+    email: 'mary.frutas@mercadomedellin.mx',
+    role: 'vendedor',
+    title: 'Locataria Puesto 42 · Frutas y Legumbres',
+    organization: 'Mercado Medellín (Cuauhtémoc)',
+    badgeText: 'Usuario Vendedor',
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=250',
+  },
+};
+
 interface AppContextType {
+  currentUser: User | null;
+  login: (role: UserRole) => void;
+  logout: () => void;
   markets: Market[];
   selectedMarketId: string;
   selectedMarket: Market | undefined;
@@ -123,7 +161,66 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   });
 
-  const [activeView, setActiveView] = useState<ActiveAppView>('comprador');
+  const [currentUser, setCurrentUser] = useState<User | null>(() => {
+    try {
+      const saved = localStorage.getItem('canasta_current_user_v1');
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  });
+
+  const [activeView, setActiveView] = useState<ActiveAppView>(() => {
+    try {
+      const savedUser = localStorage.getItem('canasta_current_user_v1');
+      if (savedUser) {
+        const u = JSON.parse(savedUser) as User;
+        if (u.role === 'admin') return 'gobierno_b2g';
+        if (u.role === 'vendedor') return 'locatario';
+      }
+    } catch {
+      // fallback
+    }
+    return 'comprador';
+  });
+
+  const login = (role: UserRole) => {
+    const user = MOCK_USERS[role];
+    setCurrentUser(user);
+    try {
+      localStorage.setItem('canasta_current_user_v1', JSON.stringify(user));
+    } catch (e) {
+      console.error(e);
+    }
+    if (role === 'admin') {
+      setActiveView('gobierno_b2g');
+    } else if (role === 'vendedor') {
+      setActiveView('locatario');
+    } else {
+      setActiveView('comprador');
+    }
+  };
+
+  const logout = () => {
+    setCurrentUser(null);
+    setIsCartOpen(false);
+    try {
+      localStorage.removeItem('canasta_current_user_v1');
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  useEffect(() => {
+    if (!currentUser) return;
+    if (currentUser.role === 'admin' && activeView !== 'gobierno_b2g') {
+      setActiveView('gobierno_b2g');
+    } else if (currentUser.role === 'cliente' && activeView !== 'comprador' && activeView !== 'mercados_mapa') {
+      setActiveView('comprador');
+    } else if (currentUser.role === 'vendedor' && activeView !== 'locatario' && activeView !== 'whatsapp_bot') {
+      setActiveView('locatario');
+    }
+  }, [currentUser, activeView]);
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<string>('Todas');
@@ -392,6 +489,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   return (
     <AppContext.Provider
       value={{
+        currentUser,
+        login,
+        logout,
         markets,
         selectedMarketId,
         selectedMarket,
