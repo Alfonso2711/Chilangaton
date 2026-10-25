@@ -30,6 +30,8 @@ export const MarketplaceView: React.FC<MarketplaceViewProps> = ({ onOpenStall })
     setSelectedCategory,
     searchQuery,
     setActiveView,
+    frequentBaskets,
+    loadFrequentBasket,
   } = useApp();
 
   const categories: string[] = [
@@ -62,6 +64,67 @@ export const MarketplaceView: React.FC<MarketplaceViewProps> = ({ onOpenStall })
     <div className="space-y-8">
       {/* 1. Hero & Live Status */}
       <HeroBanner />
+
+      {/* 1.1 Compras Recurrentes: Canasta Frecuente en 1 Clic */}
+      <section className="space-y-3.5">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <div className="flex items-center gap-1.5 text-xs font-bold text-amber-800 uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+              Ahorra Tiempo · Compra en 1 Clic
+            </div>
+            <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-0.5">
+              Canastas Frecuentes
+            </h2>
+          </div>
+          <span className="text-xs text-slate-500">
+            Los productos indispensables del tianguis, listos en tu carrito con 1 toque
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+          {frequentBaskets.map((basket) => (
+            <div
+              key={basket.id}
+              className="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-xs hover:shadow-md transition-all flex flex-col justify-between gap-3 group border-l-4 border-l-emerald-600"
+            >
+              <div>
+                <div className="flex items-start justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl">{basket.emoji}</span>
+                    <h3 className="font-extrabold text-sm text-slate-900 group-hover:text-emerald-700 transition-colors">
+                      {basket.name}
+                    </h3>
+                  </div>
+                  <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/60">
+                    Ahorras ${basket.savingsVsSuper}
+                  </span>
+                </div>
+                <p className="text-xs text-slate-500 mt-1.5 line-clamp-2 leading-relaxed">
+                  {basket.tagline}
+                </p>
+              </div>
+
+              <div className="flex items-center justify-between pt-2.5 border-t border-slate-100">
+                <div>
+                  <div className="text-[10px] text-slate-400 font-semibold uppercase">Total estimado</div>
+                  <div className="font-black text-base text-slate-900 font-mono">
+                    ${basket.approxTotal} MXN
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => loadFrequentBasket(basket.id)}
+                  className="px-3.5 py-2 rounded-xl bg-[#006948] hover:bg-emerald-800 text-white text-xs font-bold transition-all shadow-xs flex items-center gap-1.5 active:scale-95"
+                >
+                  <span>Pedir en 1 Clic</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* 2. Puestos Activos en este Mercado */}
       <section className="space-y-4">

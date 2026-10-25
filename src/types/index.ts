@@ -175,6 +175,17 @@ export interface PickupProgress {
   incidents: Record<string, string>; // stallId -> motivo
 }
 
+/** Canasta de compra recurrente pre-armada o guardada por el usuario (1-clic reorder) */
+export interface FrequentBasket {
+  id: string;
+  name: string;
+  tagline: string;
+  emoji: string;
+  items: { productId: string; quantity: number }[];
+  approxTotal: number;
+  savingsVsSuper: number;
+}
+
 export type UserRole = 'admin' | 'cliente' | 'vendedor';
 
 export interface User {

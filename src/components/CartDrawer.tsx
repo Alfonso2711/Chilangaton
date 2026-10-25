@@ -36,6 +36,7 @@ export const CartDrawer: React.FC = () => {
     setActiveView,
     activeOrder,
     setCroquisPreview,
+    saveCurrentCartAsBasket,
   } = useApp();
 
   if (!isCartOpen) return null;
@@ -210,12 +211,18 @@ export const CartDrawer: React.FC = () => {
             </div>
 
             <div className="p-4 sm:p-5 border-t border-slate-200/70 bg-white space-y-2">
-              <button
-                onClick={() => goTo('mi_canasta')}
-                className="w-full h-12 rounded-xl bg-[#006948] text-white font-bold text-base hover:bg-[#00553a] active:scale-[0.98] transition-all shadow-md shadow-emerald-900/10 flex items-center justify-center gap-2"
-              >
-                Confirmar Pedido <ArrowRight className="w-4 h-4" />
-              </button>
+                <button
+                  onClick={() => goTo('mi_canasta')}
+                  className="w-full h-12 rounded-xl bg-[#006948] text-white font-bold text-base hover:bg-[#00553a] active:scale-[0.98] transition-all shadow-md shadow-emerald-900/10 flex items-center justify-center gap-2"
+                >
+                  Confirmar Pedido <ArrowRight className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => saveCurrentCartAsBasket('Mi Canasta Semanal')}
+                  className="w-full h-9 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200/80 font-bold text-xs transition-all flex items-center justify-center gap-1.5"
+                >
+                  <span>⭐ Guardar esta compra como Canasta Frecuente</span>
+                </button>
               <p className="text-[11px] text-slate-500 flex items-center justify-center gap-1">
                 <Lock className="w-3 h-3" /> Pago contra entrega o SPEI · Recolección en cubículo o envío 100% ecológico
               </p>

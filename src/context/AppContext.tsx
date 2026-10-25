@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import {
   Market,
   Stall,
@@ -16,6 +16,7 @@ import {
   StopStatus,
   CLIENTE_VIEWS,
   VENDEDOR_VIEWS,
+  FrequentBasket,
 } from '../types';
 import {
   INITIAL_MARKETS,
@@ -93,6 +94,11 @@ interface AppContextType {
   cartSavingsPercent: number;
   isCartOpen: boolean;
   setIsCartOpen: (open: boolean) => void;
+
+  frequentBaskets: FrequentBasket[];
+  loadFrequentBasket: (basketId: string) => void;
+  saveCurrentCartAsBasket: (name: string, emoji?: string) => void;
+  deleteFrequentBasket: (basketId: string) => void;
 
   orders: Order[];
   createOrder: (
@@ -244,6 +250,109 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setActiveView('locatario');
     }
   }, [currentUser, activeView]);
+  const DEFAULT_FREQUENT_BASKETS: FrequentBasket[] = [
+    {
+      id: 'basket-basicos',
+      name: 'Básicos de la Semana',
+      tagline: 'Jitomate, cebolla, limón y aguacate para la cocina diaria',
+      emoji: '🧺',
+      items: [
+        { productId: 'prod-jitomate-saladet', quantity: 1.5 },
+        { productId: 'prod-cebolla-blanca', quantity: 1 },
+        { productId: 'prod-limon-colima', quantity: 1 },
+        { productId: 'prod-aguacate-hass', quantity: 1 },
+      ],
+      approxTotal: 138,
+      savingsVsSuper: 88,
+    },
+    {
+      id: 'basket-saludable',
+      name: 'Fruta y Verdura Fresca',
+      tagline: 'Hortalizas, plátano, manzana y cilantro de Xochimilco',
+      emoji: '🥗',
+      items: [
+        { productId: 'prod-jitomate-saladet', quantity: 1 },
+        { productId: 'prod-platano-tabasco', quantity: 1.5 },
+        { productId: 'prod-manzana-golden', quantity: 1 },
+        { productId: 'prod-cilantro-chinampa', quantity: 2 },
+      ],
+      approxTotal: 103,
+      savingsVsSuper: 62,
+    },
+    {
+      id: 'basket-comida',
+      name: 'Comida y Proteína del Mercado',
+      tagline: 'Pechuga fresca, bistec de res suave y queso Oaxaca artesanal',
+      emoji: '🥩',
+      items: [
+        { productId: 'prod-pechuga-pollo', quantity: 1 },
+        { productId: 'prod-bistec-res', quantity: 1 },
+        { productId: 'prod-queso-oaxaca', quantity: 0.5 },
+      ],
+      approxTotal: 375,
+      savingsVsSuper: 148,
+    },
+  ];
+
+  const [customBaskets, setCustomBaskets] = useState<FrequentBasket[]>(() => {
+    try {
+      const saved = localStorage.getItem('canasta_custom_baskets_v1');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('canasta_custom_baskets_v1', JSON.stringify(customBaskets));
+    } catch (e) {
+      console.error(e);
+    }
+  }, [customBaskets]);
+
+  const frequentBaskets: FrequentBasket[] = useMemo(() => {
+    return [...customBaskets, ...DEFAULT_FREQUENT_BASKETS];
+  }, [customBaskets]);
+
+  const loadFrequentBasket = (basketId: string) => {
+    const basket = frequentBaskets.find((b: FrequentBasket) => b.id === basketId);
+    if (!basket) return;
+    const newCartItems: CartItem[] = [];
+    basket.items.forEach(({ productId, quantity }: { productId: string; quantity: number }) => {
+      const prod = products.find((p) => p.id === productId);
+      if (prod) {
+        newCartItems.push({ product: prod, quantity });
+      }
+    });
+    if (newCartItems.length > 0) {
+      setCart(newCartItems);
+      setIsCartOpen(true);
+      setRecentNotification(`🧺 Canasta cargada: "${basket.name}" (${newCartItems.length} productos)`);
+      window.setTimeout(() => setRecentNotification(null), 3500);
+    }
+  };
+
+  const saveCurrentCartAsBasket = (name: string, emoji = '⭐') => {
+    if (cart.length === 0) return;
+    const newBasket: FrequentBasket = {
+      id: `basket-custom-${Date.now()}`,
+      name: name || 'Mi Canasta Favorita',
+      tagline: `Guardada con ${cart.length} productos recurrentes`,
+      emoji,
+      items: cart.map((c) => ({ productId: c.product.id, quantity: c.quantity })),
+      approxTotal: Math.round(cartTotalCanastaLocal),
+      savingsVsSuper: Math.round(cartSavingsPesos),
+    };
+    setCustomBaskets((prev) => [newBasket, ...prev]);
+    setRecentNotification(`⭐ Canasta "${newBasket.name}" guardada para reordenar en 1 clic`);
+    window.setTimeout(() => setRecentNotification(null), 3500);
+  };
+
+  const deleteFrequentBasket = (basketId: string) => {
+    setCustomBaskets((prev) => prev.filter((b) => b.id !== basketId));
+  };
+
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   const [croquisPreview, setCroquisPreview] = useState<boolean>(false);
   const [activeOrderId, setActiveOrderId] = useState<string | null>(() => {
@@ -625,6 +734,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         cartSavingsPercent,
         isCartOpen,
         setIsCartOpen,
+        frequentBaskets,
+        loadFrequentBasket,
+        saveCurrentCartAsBasket,
+        deleteFrequentBasket,
         orders,
         createOrder,
         updateOrderStatus,
