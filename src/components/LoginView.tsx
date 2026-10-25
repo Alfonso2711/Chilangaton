@@ -65,11 +65,12 @@ export const LoginView: React.FC = () => {
       accentColor: 'from-emerald-600 to-teal-700',
       borderHover: 'hover:border-emerald-500 focus:border-emerald-600',
       icon: ShoppingBag,
-      accessBadge: 'Pantallas: Comprar, Mercados & Tianguis, Carrito',
+      accessBadge: 'Pantallas: Comprar, Mercados & Tianguis, Mi Canasta y Croquis',
       screens: [
         'Catálogo de productos frescos directo de marchantes',
         'Directorio y Mapa Georreferenciado de Mercados/Tianguis',
         'Carrito con Comparador de Ahorro frente al Súper',
+        'Ficha QR y croquis de pasillos para recoger en cubículo',
       ],
       description:
         'Perfil para el consumidor barrial que busca calidad, mejores precios locales y bici-reparto sustentable.',
@@ -84,9 +85,10 @@ export const LoginView: React.FC = () => {
       accentColor: 'from-amber-600 to-orange-600',
       borderHover: 'hover:border-amber-500 focus:border-amber-600',
       icon: Store,
-      accessBadge: 'Pantallas: Mi Puesto & MarchanteBot (Voz/IA)',
+      accessBadge: 'Pantallas: Dashboard, WhatsApp IA, Inventario y Ventas',
       screens: [
         'Portal de gestión de puesto: catálogo e inventario',
+        'Ventas y Pedidos: prepara y valida fichas de recolección',
         'Simulador WhatsApp / Ingesta de voz con MarchanteBot IA',
         'Buró de Crédito Barrial & Inclusión Financiera',
       ],

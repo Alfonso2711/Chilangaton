@@ -12,6 +12,10 @@ import {
   TrustProfile,
   User,
   UserRole,
+  PickupProgress,
+  StopStatus,
+  CLIENTE_VIEWS,
+  VENDEDOR_VIEWS,
 } from '../types';
 import {
   INITIAL_MARKETS,
@@ -75,6 +79,7 @@ interface AppContextType {
   products: Product[];
   updateProductPrice: (productId: string, newPrice: number) => void;
   toggleProductStock: (productId: string, inStock?: boolean) => void;
+  addProduct: (product: Omit<Product, 'id' | 'updatedAt'>) => void;
 
   cart: CartItem[];
   addToCart: (product: Product, quantity?: number) => void;
@@ -90,7 +95,25 @@ interface AppContextType {
   setIsCartOpen: (open: boolean) => void;
 
   orders: Order[];
-  createOrder: (deliveryType: 'bici' | 'pickup', paymentMethod: 'efectivo' | 'codi_dimo' | 'spei', customerName: string, customerPhone: string, deliveryAddress?: string) => Order;
+  createOrder: (
+    deliveryType: 'bici' | 'pickup',
+    paymentMethod: 'efectivo' | 'codi_dimo' | 'spei',
+    customerName: string,
+    customerPhone: string,
+    deliveryAddress?: string,
+    extras?: { notes?: string; cashTendered?: number }
+  ) => Order;
+  // Pedido de recolección que el cliente sigue en el croquis (RF-08)
+  activeOrderId: string | null;
+  setActiveOrderId: (orderId: string | null) => void;
+  activeOrder: Order | undefined;
+  // true cuando el croquis se abre desde el carrito como vista previa (sin ficha generada)
+  croquisPreview: boolean;
+  setCroquisPreview: (preview: boolean) => void;
+  // Avance de cada puesto dentro de una ficha de recolección (compartido cliente ↔ vendedor)
+  pickupProgress: Record<string, PickupProgress>;
+  setStopStatus: (orderId: string, stallId: string, status: StopStatus) => void;
+  reportStopIncident: (orderId: string, stallId: string, reason: string | null) => void;
   updateOrderStatus: (orderId: string, status: Order['status']) => void;
 
   activeView: ActiveAppView;
@@ -215,13 +238,29 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     if (!currentUser) return;
     if (currentUser.role === 'admin' && activeView !== 'gobierno_b2g') {
       setActiveView('gobierno_b2g');
-    } else if (currentUser.role === 'cliente' && activeView !== 'comprador' && activeView !== 'mercados_mapa') {
+    } else if (currentUser.role === 'cliente' && !CLIENTE_VIEWS.includes(activeView)) {
       setActiveView('comprador');
-    } else if (currentUser.role === 'vendedor' && activeView !== 'locatario' && activeView !== 'whatsapp_bot') {
+    } else if (currentUser.role === 'vendedor' && !VENDEDOR_VIEWS.includes(activeView)) {
       setActiveView('locatario');
     }
   }, [currentUser, activeView]);
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
+  const [croquisPreview, setCroquisPreview] = useState<boolean>(false);
+  const [activeOrderId, setActiveOrderId] = useState<string | null>(() => {
+    try {
+      return localStorage.getItem('canasta_active_order_v1');
+    } catch {
+      return null;
+    }
+  });
+  const [pickupProgress, setPickupProgress] = useState<Record<string, PickupProgress>>(() => {
+    try {
+      const saved = localStorage.getItem('canasta_pickup_progress_v1');
+      return saved ? JSON.parse(saved) : {};
+    } catch {
+      return {};
+    }
+  });
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<string>('Todas');
   const [recentNotification, setRecentNotification] = useState<string | null>(null);
@@ -256,9 +295,52 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     localStorage.setItem('canasta_whatsapp_v1', JSON.stringify(whatsAppMessages));
   }, [whatsAppMessages]);
 
+  useEffect(() => {
+    try {
+      if (activeOrderId) localStorage.setItem('canasta_active_order_v1', activeOrderId);
+      else localStorage.removeItem('canasta_active_order_v1');
+    } catch {
+      // almacenamiento no disponible
+    }
+  }, [activeOrderId]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('canasta_pickup_progress_v1', JSON.stringify(pickupProgress));
+    } catch {
+      // almacenamiento no disponible
+    }
+  }, [pickupProgress]);
+
   const selectedMarket = markets.find((m) => m.id === selectedMarketId) || markets[0];
   const selectedStall = stalls.find((s) => s.id === selectedStallId);
   const merchantStall = stalls.find((s) => s.id === 'stall-dona-mary') || stalls[0];
+  const activeOrder = orders.find((o) => o.id === activeOrderId);
+
+  const setStopStatus = (orderId: string, stallId: string, status: StopStatus) => {
+    setPickupProgress((prev) => {
+      const current = prev[orderId] || { statuses: {}, incidents: {} };
+      const incidents = { ...current.incidents };
+      if (status !== 'incidencia') delete incidents[stallId];
+      return { ...prev, [orderId]: { statuses: { ...current.statuses, [stallId]: status }, incidents } };
+    });
+  };
+
+  const reportStopIncident = (orderId: string, stallId: string, reason: string | null) => {
+    setPickupProgress((prev) => {
+      const current = prev[orderId] || { statuses: {}, incidents: {} };
+      const incidents = { ...current.incidents };
+      const statuses = { ...current.statuses };
+      if (reason) {
+        incidents[stallId] = reason;
+        statuses[stallId] = 'incidencia';
+      } else {
+        delete incidents[stallId];
+        statuses[stallId] = 'listo';
+      }
+      return { ...prev, [orderId]: { statuses, incidents } };
+    });
+  };
 
   // Cart calculations
   const cartTotalCanastaLocal = cart.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
@@ -300,6 +382,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const clearCart = () => setCart([]);
+
+  const addProduct = (product: Omit<Product, 'id' | 'updatedAt'>) => {
+    const newProduct: Product = {
+      ...product,
+      id: `prod-${Date.now().toString(36)}`,
+      updatedAt: 'Justo ahora',
+    };
+    setProducts((prev) => [newProduct, ...prev]);
+  };
 
   const updateProductPrice = (productId: string, newPrice: number) => {
     setProducts((prev) =>
@@ -355,11 +446,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     paymentMethod: 'efectivo' | 'codi_dimo' | 'spei',
     customerName: string,
     customerPhone: string,
-    deliveryAddress?: string
+    deliveryAddress?: string,
+    extras?: { notes?: string; cashTendered?: number }
   ): Order => {
     const deliveryFee = deliveryType === 'bici' ? 25 : 0;
     const newOrder: Order = {
-      id: `ORD-${Date.now().toString().slice(-6)}`,
+      id: `ML-${Date.now().toString().slice(-4)}`,
+      // Ficha única de retiro (RF-14): solo aplica a recolección en cubículo
+      pickupToken: deliveryType === 'pickup' ? `CDMX-${Date.now().toString().slice(-8, -4)}` : undefined,
+      notes: extras?.notes?.trim() || undefined,
+      cashTendered: paymentMethod === 'efectivo' ? extras?.cashTendered : undefined,
       createdAt: new Date().toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' }),
       items: [...cart],
       deliveryType,
@@ -376,6 +472,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
 
     setOrders((prev) => [newOrder, ...prev]);
+
+    // Ficha de recolección: estado inicial de cada puesto (lo actualiza el locatario o la simulación)
+    if (deliveryType === 'pickup') {
+      const stallIds = Array.from(new Set(cart.map((c) => c.product.stallId)));
+      const statuses: Record<string, StopStatus> = {};
+      stallIds.forEach((sid, i) => {
+        statuses[sid] = sid === merchantStall.id ? 'preparando' : i % 2 === 1 ? 'en_bascula' : 'listo';
+      });
+      setPickupProgress((prev) => ({ ...prev, [newOrder.id]: { statuses, incidents: {} } }));
+    }
 
     // Update merchant recorded sales & trust score
     const merchantSalesIncrease = cart
@@ -522,6 +628,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         orders,
         createOrder,
         updateOrderStatus,
+        activeOrderId,
+        setActiveOrderId,
+        activeOrder,
+        croquisPreview,
+        setCroquisPreview,
+        pickupProgress,
+        setStopStatus,
+        reportStopIncident,
+        addProduct,
         activeView,
         setActiveView,
         whatsAppMessages,
