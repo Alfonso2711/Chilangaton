@@ -104,7 +104,7 @@ export const VendorPortal: React.FC = () => {
               <Store className="w-5 h-5" />
             </span>
             <div className="leading-tight">
-              <div className="text-sm font-bold text-slate-900">CanastaLocal</div>
+              <div className="text-sm font-bold text-slate-900">Canastita</div>
               <div className="text-xs font-semibold text-[#006948]">Negocios</div>
             </div>
           </div>
@@ -203,7 +203,7 @@ export const VendorPortal: React.FC = () => {
         {/* Migas de pan */}
         <div className="flex items-center justify-between gap-2">
           <div className="text-xs text-slate-500">
-            CanastaLocal <span className="mx-1">/</span>
+            Canastita <span className="mx-1">/</span>
             <span className="font-semibold text-slate-800">{BREADCRUMB[activeView] || 'Panel de Control'}</span>
           </div>
           <div className="flex items-center gap-2">

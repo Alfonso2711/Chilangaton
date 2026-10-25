@@ -252,7 +252,7 @@ export const MiCanastaView: React.FC = () => {
           >
             <ArrowLeft className="w-4 h-4" />
           </button>
-          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">Mi Canasta Local</h1>
+          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">Mi Canastita</h1>
           <span className="px-2 py-0.5 rounded-full bg-[#eaedff] text-slate-700 text-xs font-semibold">
             {totalItems} {totalItems === 1 ? 'artículo' : 'artículos'}
           </span>

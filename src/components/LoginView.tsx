@@ -111,7 +111,7 @@ export const LoginView: React.FC = () => {
             <ShoppingBag className="w-7 h-7" />
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
-            Canasta<span className="text-emerald-600">Local</span> CDMX
+            Canas<span className="text-emerald-600">tita</span> CDMX
           </h1>
         </div>
 
@@ -309,7 +309,7 @@ export const LoginView: React.FC = () => {
 
       {/* Institutional note footer */}
       <div className="text-center mt-10 text-xs text-slate-400">
-        CanastaLocal CDMX · Proyecto para la Inclusión Digital y Financiera del Comercio Popular
+        Canastita CDMX · Proyecto para la Inclusión Digital y Financiera del Comercio Popular
       </div>
     </div>
   );

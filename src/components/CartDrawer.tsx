@@ -68,7 +68,7 @@ export const CartDrawer: React.FC = () => {
         {/* Encabezado */}
         <div className="p-4 sm:p-5 flex items-center justify-between gap-2">
           <div className="flex items-center gap-2.5">
-            <h2 className="text-xl font-bold text-slate-900">Mi Canasta Local</h2>
+            <h2 className="text-xl font-bold text-slate-900">Mi Canastita</h2>
             <span className="px-2 py-0.5 rounded-full bg-emerald-200/70 text-[#005137] text-xs font-bold">
               {totalItems} {totalItems === 1 ? 'artículo' : 'artículos'}
             </span>
