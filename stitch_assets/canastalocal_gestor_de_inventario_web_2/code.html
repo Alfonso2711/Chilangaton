@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-dim":"#d2d9f4","tertiary-container":"#ba5551","on-primary-fixed":"#002114","primary":"#006948","on-primary":"#ffffff","secondary-fixed":"#ffdbca","on-secondary":"#ffffff","on-surface":"#131b2e","error-container":"#ffdad6","on-tertiary":"#ffffff","on-secondary-fixed":"#341100","surface-tint":"#006c4a","surface-variant":"#dae2fd","secondary":"#9d4300","surface":"#faf8ff","tertiary":"#9b3e3b","secondary-container":"#fd761a","primary-fixed-dim":"#68dba9","tertiary-fixed-dim":"#ffb3ae","inverse-surface":"#283044","on-tertiary-container":"#fffbff","primary-fixed":"#85f8c4","surface-container-low":"#f2f3ff","surface-bright":"#faf8ff","on-primary-container":"#f5fff7","on-tertiary-fixed":"#410004","background":"#faf8ff","tertiary-fixed":"#ffdad7","secondary-fixed-dim":"#ffb690","on-background":"#131b2e","on-surface-variant":"#3d4a42","surface-container":"#eaedff","error":"#ba1a1a","on-secondary-container":"#5c2400","outline-variant":"#bccac0","on-primary-fixed-variant":"#005137","on-error-container":"#93000a","inverse-on-surface":"#eef0ff","surface-container-lowest":"#ffffff","on-error":"#ffffff","outline":"#6d7a72","on-tertiary-fixed-variant":"#7f2928","inverse-primary":"#68dba9","surface-container-high":"#e2e7ff","primary-container":"#00855d","surface-container-highest":"#dae2fd","on-secondary-fixed-variant":"#783200"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","gutter-mobile":"1rem","space-xl":"2rem","space-xs":"0.25rem","margin-mobile":"1rem","space-lg":"1.5rem","space-md":"1rem","margin":"2rem","gutter":"1.5rem"},"fontFamily":{"label-md":["Plus Jakarta Sans"],"display-mobile":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"display":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"]},"fontSize":{"label-md":["0.875rem",{"lineHeight":"1","letterSpacing":"0.01em","fontWeight":"600"}],"display-mobile":["2.25rem",{"lineHeight":"1.15","letterSpacing":"-0.025em","fontWeight":"800"}],"headline-sm":["1.25rem",{"lineHeight":"1.35","letterSpacing":"-0.01em","fontWeight":"700"}],"body-sm":["0.8125rem",{"lineHeight":"1.45","letterSpacing":"0em","fontWeight":"400"}],"headline-md":["1.5rem",{"lineHeight":"1.3","letterSpacing":"-0.015em","fontWeight":"700"}],"headline-lg":["2.25rem",{"lineHeight":"1.2","letterSpacing":"-0.02em","fontWeight":"800"}],"body-lg":["1.125rem",{"lineHeight":"1.6","letterSpacing":"-0.01em","fontWeight":"400"}],"label-sm":["0.75rem",{"lineHeight":"1","letterSpacing":"0.02em","fontWeight":"600"}],"display":["3.5rem",{"lineHeight":"1.1","letterSpacing":"-0.03em","fontWeight":"800"}],"headline-lg-mobile":["1.75rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"800"}],"body-md":["0.9375rem",{"lineHeight":"1.5","letterSpacing":"0em","fontWeight":"400"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="px-space-lg pt-space-lg pb-space-md"><div class="flex items-center gap-space-sm mb-space-md"><div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[20px]">storefront</span></div><div><span class="font-label-md text-label-md text-on-surface tracking-tight block">CanastaLocal</span><span class="font-label-sm text-label-sm text-primary font-bold">Negocios</span></div></div><div class="p-space-sm bg-surface-container-low rounded-xl flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant font-bold text-xs">DM</div><div class="flex-1 min-w-0"><p class="font-label-md text-label-md text-on-surface truncate">Doña Mary</p><p class="font-body-sm text-body-sm text-on-surface-variant truncate">Puesto #24 · Medellín</p></div></div></div><nav class="flex flex-col gap-1 px-space-md mt-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-bold shadow-xs"><a class="flex items-center gap-space-sm px-3 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all text-sm font-medium" data-path="dashboard-principal" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Dashboard Principal</span></a><a class="flex items-center justify-between px-3 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all text-sm font-medium" data-path="sincronizacion-whatsapp-ia" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">chat</span><span>WhatsApp IA</span></div><span class="inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-primary-fixed text-on-primary-fixed-variant">IA Activa</span></a><a aria-current="page" class="flex items-center gap-space-sm px-3 py-2 rounded-xl transition-all bg-primary-container text-on-primary-container font-bold shadow-xs" data-path="inventario-de-productos" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span>Inventario de Productos</span></a><a class="flex items-center gap-space-sm px-3 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all text-sm font-medium" data-path="ventas-y-pedidos" href="#"><span class="material-symbols-outlined text-[20px]">shopping_bag</span><span>Ventas y Pedidos</span></a><a class="flex items-center gap-space-sm px-3 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all text-sm font-medium" data-path="ajustes-del-puesto" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Ajustes del Puesto</span></a></nav></div><div class="p-space-md border-t border-surface-container-high bg-surface-container-lowest"><div class="p-space-sm bg-surface-container-low rounded-xl mb-space-sm flex items-center justify-between"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface-variant">En Línea · Puesto 24</span></div></div><a class="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all text-xs font-medium mb-1" data-path="tienda-publica" href="#"><span>Ver puesto público</span><span class="material-symbols-outlined text-[16px]">open_in_new</span></a><a class="flex items-center gap-2 px-3 py-2 rounded-lg text-tertiary hover:bg-surface-container-high transition-all text-xs font-medium" data-path="login" href="#"><span class="material-symbols-outlined text-[16px]">logout</span><span>Cambiar / Cerrar sesión</span></a></div></aside><div class="pl-64 min-h-screen flex flex-col"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-sm"><span class="font-label-sm text-label-sm text-on-surface-variant">CanastaLocal</span><span class="text-outline text-xs">/</span><span class="font-label-sm text-label-sm text-on-surface font-semibold">Panel de Control</span></div><div class="flex items-center gap-space-md"><a class="hidden sm:flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm text-label-sm transition-colors" data-path="tienda-publica" href="#"><span class="material-symbols-outlined text-[16px]">store</span><span>Puesto Público</span></a><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary-container"></span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-16 bg-surface flex-1 w-full max-w-7xl mx-auto px-space-lg py-space-lg"><div class="flex flex-col w-full">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-space-md mb-space-lg">
+<div class="space-y-1">
+<div class="flex items-center gap-space-sm flex-wrap">
+<h1 class="font-headline-md text-headline-md text-slate-900 tracking-tight">Inventario de Productos</h1>
+<span class="inline-flex items-center font-label-sm text-label-sm px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700">
+          45 productos
+        </span>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-100">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          Sincronizado vía WhatsApp
+        </span>
+</div>
+<p class="font-body-md text-body-md text-slate-500 max-w-2xl">
+        Gestiona los productos disponibles en tu puesto del Mercado Medellín, ajusta precios en tiempo real y controla disponibilidad.
+      </p>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-2 self-start md:self-auto">
+<button class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 active:scale-[0.99] text-white font-label-md text-label-md shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500/20" onclick="openNewProductModal()" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>Agregar Producto Nuevo</span>
+</button>
+</div>
+</div>
+<!-- Metric Badges Row -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-md mb-space-lg">
+<div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-sm flex items-center justify-between">
+<div>
+<p class="font-label-sm text-label-sm text-slate-500">Total Catálogo</p>
+<p class="font-headline-sm text-headline-sm text-slate-900 font-bold mt-0.5">45</p>
+</div>
+<div class="w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined text-[20px]">inventory</span>
+</div>
+</div>
+<div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-sm flex items-center justify-between">
+<div>
+<p class="font-label-sm text-label-sm text-slate-500">Disponibles</p>
+<p class="font-headline-sm text-headline-sm text-emerald-600 font-bold mt-0.5">38</p>
+</div>
+<div class="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+</div>
+<div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-sm flex items-center justify-between">
+<div>
+<p class="font-label-sm text-label-sm text-slate-500">Agotados</p>
+<p class="font-headline-sm text-headline-sm text-slate-400 font-bold mt-0.5">7</p>
+</div>
+<div class="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</div>
+</div>
+<div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-sm flex items-center justify-between">
+<div>
+<p class="font-label-sm text-label-sm text-slate-500">Actualizados hoy</p>
+<p class="font-headline-sm text-headline-sm text-indigo-600 font-bold mt-0.5">14</p>
+</div>
+<div class="w-10 h-10 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600">
+<span class="material-symbols-outlined text-[20px]">auto_mode</span>
+</div>
+</div>
+</div>
+<!-- Table Toolbar (Shadcn style) -->
+<div class="bg-white rounded-t-xl border border-b-0 border-slate-200 p-space-md flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md shadow-sm">
+<!-- Left Filter Stack -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-sm flex-1">
+<!-- Search Input -->
+<div class="relative w-full sm:w-80">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[18px]">
+          search
+        </span>
+<input class="w-full h-10 pl-9 pr-3 text-sm bg-white border border-slate-200 rounded-lg text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600/30 transition-all" id="productSearchInput" oninput="handleSearch(this.value)" placeholder="Buscar producto por nombre o código..." type="text"/>
+</div>
+<!-- Select Category -->
+<div class="relative min-w-[170px]">
+<select class="w-full h-10 px-3 pr-8 text-sm bg-white border border-slate-200 rounded-lg text-slate-700 appearance-none focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600/30 transition-all font-medium cursor-pointer" id="categoryFilterSelect" onchange="filterByCategory(this.value)">
+<option value="all">Todas las categorías</option>
+<option value="Verduras">Verduras</option>
+<option value="Frutas">Frutas</option>
+<option value="Tubérculos">Tubérculos</option>
+<option value="Hierbas">Hierbas</option>
+<option value="Chiles y Semillas">Chiles y Semillas</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-[18px] pointer-events-none">
+          expand_more
+        </span>
+</div>
+<!-- Select Status -->
+<div class="relative min-w-[150px]">
+<select class="w-full h-10 px-3 pr-8 text-sm bg-white border border-slate-200 rounded-lg text-slate-700 appearance-none focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600/30 transition-all font-medium cursor-pointer" id="statusFilterSelect" onchange="filterByStatus(this.value)">
+<option value="all">Todos los estados</option>
+<option value="active">Activos</option>
+<option value="out">Agotados</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-[18px] pointer-events-none">
+          expand_more
+        </span>
+</div>
+</div>
+<!-- Right Utility Buttons -->
+<div class="flex items-center gap-2 self-end lg:self-auto">
+<button class="h-10 px-3.5 inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-slate-200" onclick="exportToCSV()" title="Descargar lista de precios en formato CSV" type="button">
+<span class="material-symbols-outlined text-[18px] text-slate-500">download</span>
+<span>Exportar CSV</span>
+</button>
+<button class="h-10 px-3.5 inline-flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50/70 hover:bg-emerald-100/70 text-emerald-800 text-sm font-medium transition-all shadow-2xs focus:outline-none focus:ring-2 focus:ring-emerald-500/20" onclick="triggerWhatsAppSync(this)" title="Forzar actualización con el audio o notas del día de WhatsApp" type="button">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+</span>
+<span class="material-symbols-outlined text-[18px] text-emerald-600">chat</span>
+<span id="syncBtnLabel">Sincronizar con WhatsApp</span>
+</button>
+</div>
+</div>
+<!-- Selection Action Bar (hidden until selected) -->
+<div class="hidden bg-slate-900 text-white px-4 py-2.5 flex items-center justify-between text-xs font-medium" id="selectionActionBar">
+<div class="flex items-center gap-3">
+<span class="bg-indigo-500 text-white px-2 py-0.5 rounded-full font-bold" id="selectedCountBadge">0</span>
+<span>productos seleccionados</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="hover:bg-slate-800 px-2.5 py-1 rounded transition-colors text-emerald-300" onclick="markSelectedStatus(true)">Marcar como Activos</button>
+<button class="hover:bg-slate-800 px-2.5 py-1 rounded transition-colors text-rose-300" onclick="markSelectedStatus(false)">Marcar como Agotados</button>
+<button class="text-slate-400 hover:text-white ml-2" onclick="clearSelection()">Desmarcar</button>
+</div>
+</div>
+<!-- Shadcn Data Table Container -->
+<div class="border border-slate-200 bg-white shadow-sm overflow-hidden rounded-b-none border-t-0">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse" id="productsTable">
+<thead>
+<tr class="bg-slate-50/80 border-b border-slate-200">
+<th class="py-3.5 px-4 text-xs font-semibold uppercase tracking-wider text-slate-500 w-12 text-center">
+<input class="w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 focus:ring-offset-0 cursor-pointer align-middle" id="selectAllCheckbox" onchange="toggleSelectAll(this)" type="checkbox"/>
+</th>
+<th class="py-3.5 px-4 text-xs font-semibold uppercase tracking-wider text-slate-500 min-w-[280px]">
+              Producto
+            </th>
+<th class="py-3.5 px-4 text-xs font-semibold uppercase tracking-wider text-slate-500 min-w-[120px]">
+              Categoría
+            </th>
+<th class="py-3.5 px-4 text-xs font-semibold uppercase tracking-wider text-slate-500 min-w-[140px]">
+              Precio ($ MXN)
+            </th>
+<th class="py-3.5 px-4 text-xs font-semibold uppercase tracking-wider text-slate-500 min-w-[150px]">
+              Disponibilidad
+            </th>
+<th class="py-3.5 px-4 text-xs font-semibold uppercase tracking-wider text-slate-500 min-w-[210px]">
+              Última actualización
+            </th>
+<th class="py-3.5 px-4 text-xs font-semibold uppercase tracking-wider text-slate-500 text-right w-20">
+              Acciones
+            </th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 text-slate-800 font-body-sm text-body-sm">
+<!-- Row 1: Jitomate Saladette -->
+<tr class="hover:bg-slate-50/70 transition-colors group" data-category="Verduras" data-status="active" id="row-1">
+<td class="py-3.5 px-4 text-center">
+<input class="row-checkbox w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer align-middle" onchange="updateSelectionBar()" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-200">
+<img class="w-full h-full object-cover" data-alt="Close up fresh vibrant red ripe Saladette plum tomatoes stacked neatly in a rustic Mexican market stall, natural morning light, high detail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3qOjsaNBwt9pGPv3Jx1eUmELs3mBZ25-uoaFmQ56Q1koODXo069urZJL1RgAn0eDLDmvbVpCdb-GnbgoGPUhNcRHhLWiTmD82SZFCApbfaDikZ0LK_ZMLmOLFPACFRW3YrnUTsyAkvZFc5Ru3CtJe0uhtuCpkP6DCaRNRJxP1REd-T9q17EezmAX1zkGtQS51uiSBjNusoNCCH1MQYSiYrAw5kIKentuaDaV9n_PTZDAZyxmYJ8L-"/>
+</div>
+<div class="min-w-0">
+<div class="font-semibold text-slate-900 truncate">Jitomate Saladette</div>
+<div class="text-xs text-slate-500 truncate">Calibre mediano · Por kilo</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center font-label-sm text-label-sm px-2 py-0.5 rounded-md bg-slate-100 text-slate-700">
+                Verduras
+              </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="relative w-28">
+<span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-slate-400">$</span>
+<input class="w-full h-9 pl-6 pr-2.5 border border-slate-200 rounded-md text-sm font-semibold text-slate-900 bg-slate-50 hover:bg-white focus:bg-white focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600/30 transition-all" onchange="notifyPriceChange(this, 'Jitomate Saladette')" type="text" value="25.00"/>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<label class="inline-flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="sr-only peer" onchange="toggleProductAvailability(this, 'status-label-1')" type="checkbox"/>
+<div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-600 relative"></div>
+<span class="text-xs font-medium text-emerald-700 flex items-center gap-1" id="status-label-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  Activo
+                </span>
+</label>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-xs text-slate-600">
+<span class="material-symbols-outlined text-emerald-600 text-[15px]">smart_toy</span>
+<span>Hoy, 09:24 AM <span class="text-slate-400">(WhatsApp IA)</span></span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="relative inline-block text-left">
+<button class="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors focus:outline-none" onclick="toggleDropdownMenu(event, 'menu-1')" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+<div class="hidden absolute right-0 mt-1 w-36 bg-white rounded-lg shadow-lg border border-slate-200 py-1 z-30 text-xs" id="menu-1">
+<button class="w-full text-left px-3 py-1.5 hover:bg-slate-50 flex items-center gap-2 text-slate-700" onclick="editProductPrompt('Jitomate Saladette')">
+<span class="material-symbols-outlined text-[16px] text-slate-400">edit</span> Editar
+                  </button>
+<button class="w-full text-left px-3 py-1.5 hover:bg-slate-50 flex items-center gap-2 text-slate-700" onclick="duplicateProduct('Jitomate Saladette')">
+<span class="material-symbols-outlined text-[16px] text-slate-400">content_copy</span> Duplicar
+                  </button>
+<button class="w-full text-left px-3 py-1.5 hover:bg-rose-50 flex items-center gap-2 text-rose-600" onclick="deleteProductRow('row-1')">
+<span class="material-symbols-outlined text-[16px]">delete</span> Eliminar
+                  </button>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 2: Cebolla Bola Blanca -->
+<tr class="hover:bg-slate-50/70 transition-colors group" data-category="Verduras" data-status="active" id="row-2">
+<td class="py-3.5 px-4 text-center">
+<input class="row-checkbox w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer align-middle" onchange="updateSelectionBar()" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-200">
+<img class="w-full h-full object-cover" data-alt="Pile of clean white onions with paper thin crispy skin resting in a wooden market crate, soft natural studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXVgByzbUk0z4vv0vDPlgngLgCYLBMhzNUzbb1p3CCFLtY0wg8PSWIteRNNgP4X5H3j5AR_01Q23dLoRRnFiJpo2xaQszXv1O8vWU5kTpo5GPk66v03L4DUBIiUTdgWCoQOaxZ9tmdT6In6dZxDJ0YkWW1E4FQLLBSJbKelGI83O6S7ilieMxobcU_8MdWGmUZhn4818DMmc0eF1xTrEdnjWKk7rlXi_bYECtxn0ZVSNbu9LjTBoQF"/>
+</div>
+<div class="min-w-0">
+<div class="font-semibold text-slate-900 truncate">Cebolla Bola Blanca</div>
+<div class="text-xs text-slate-500 truncate">Limpia y firme · Por kilo</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center font-label-sm text-label-sm px-2 py-0.5 rounded-md bg-slate-100 text-slate-700">
+                Verduras
+              </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="relative w-28">
+<span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-slate-400">$</span>
+<input class="w-full h-9 pl-6 pr-2.5 border border-slate-200 rounded-md text-sm font-semibold text-slate-900 bg-slate-50 hover:bg-white focus:bg-white focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600/30 transition-all" onchange="notifyPriceChange(this, 'Cebolla Bola Blanca')" type="text" value="18.00"/>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<label class="inline-flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="sr-only peer" onchange="toggleProductAvailability(this, 'status-label-2')" type="checkbox"/>
+<div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-600 relative"></div>
+<span class="text-xs font-medium text-emerald-700 flex items-center gap-1" id="status-label-2">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  Activo
+                </span>
+</label>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-xs text-slate-600">
+<span class="material-symbols-outlined text-slate-400 text-[15px]">edit_note</span>
+<span>Hoy, 08:30 AM <span class="text-slate-400">(Manual)</span></span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="relative inline-block text-left">
+<button class="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors" onclick="toggleDropdownMenu(event, 'menu-2')" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+<div class="hidden absolute right-0 mt-1 w-36 bg-white rounded-lg shadow-lg border border-slate-200 py-1 z-30 text-xs" id="menu-2">
+<button class="w-full text-left px-3 py-1.5 hover:bg-slate-50 flex items-center gap-2 text-slate-700" onclick="editProductPrompt('Cebolla Bola Blanca')">
+<span class="material-symbols-outlined text-[16px] text-slate-400">edit</span> Editar
+                  </button>
+<button class="w-full text-left px-3 py-1.5 hover:bg-rose-50 flex items-center gap-2 text-rose-600" onclick="deleteProductRow('row-2')">
+<span class="material-symbols-outlined text-[16px]">delete</span> Eliminar
+                  </button>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 3: Aguacate Hass Michoacán -->
+<tr class="hover:bg-slate-50/70 transition-colors group" data-category="Frutas" data-status="active" id="row-3">
+<td class="py-3.5 px-4 text-center">
+<input class="row-checkbox w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer align-middle" onchange="updateSelectionBar()" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-200">
+<img class="w-full h-full object-cover" data-alt="Perfect Hass avocados with dark pebbled skin, one cut in half showing bright creamy lime-green flesh and seed, artisanal marketplace presentation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUrJGGQNn5N8rRMTbMwy3ouaP0pQmR3ajhgCOQPhALYnUSELiu3OYjxpyfyX0A2b4Ov5773Go_S7aOoYdbGwFZALCfmBnJ4o_qdnmNgl3SKWfLvrlLs3TOe3g9tBQoZ0D3bwhspAs6Vhs7Hl7CZn_VZvclPu2JnoBXTzCFLimoxUs6a39ydpiclNhB53SQVniqW3uWjOZBfmYfWWnd2j3LzekpzCRiW5kgSRzpRVUFG2ymkOOv70el"/>
+</div>
+<div class="min-w-0">
+<div class="font-semibold text-slate-900 truncate">Aguacate Hass Michoacán</div>
+<div class="text-xs text-slate-500 truncate">Para hoy o madurar · Por kilo</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center font-label-sm text-label-sm px-2 py-0.5 rounded-md bg-slate-100 text-slate-700">
+                Frutas
+              </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="relative w-28">
+<span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-slate-400">$</span>
+<input class="w-full h-9 pl-6 pr-2.5 border border-slate-200 rounded-md text-sm font-semibold text-slate-900 bg-slate-50 hover:bg-white focus:bg-white focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600/30 transition-all" onchange="notifyPriceChange(this, 'Aguacate Hass Michoacán')" type="text" value="65.00"/>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<label class="inline-flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="sr-only peer" onchange="toggleProductAvailability(this, 'status-label-3')" type="checkbox"/>
+<div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-600 relative"></div>
+<span class="text-xs font-medium text-emerald-700 flex items-center gap-1" id="status-label-3">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  Activo
+                </span>
+</label>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-xs text-slate-600">
+<span class="material-symbols-outlined text-emerald-600 text-[15px]">smart_toy</span>
+<span>Hoy, 09:20 AM <span class="text-slate-400">(WhatsApp IA)</span></span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="relative inline-block text-left">
+<button class="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors" onclick="toggleDropdownMenu(event, 'menu-3')" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+<div class="hidden absolute right-0 mt-1 w-36 bg-white rounded-lg shadow-lg border border-slate-200 py-1 z-30 text-xs" id="menu-3">
+<button class="w-full text-left px-3 py-1.5 hover:bg-slate-50 flex items-center gap-2 text-slate-700" onclick="editProductPrompt('Aguacate Hass Michoacán')">
+<span class="material-symbols-outlined text-[16px] text-slate-400">edit</span> Editar
+                  </button>
+<button class="w-full text-left px-3 py-1.5 hover:bg-rose-50 flex items-center gap-2 text-rose-600" onclick="deleteProductRow('row-3')">
+<span class="material-symbols-outlined text-[16px]">delete</span> Eliminar
+                  </button>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 4: Limón con Semilla -->
+<tr class="hover:bg-slate-50/70 transition-colors group" data-category="Frutas" data-status="active" id="row-4">
+<td class="py-3.5 px-4 text-center">
+<input class="row-checkbox w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer align-middle" onchange="updateSelectionBar()" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-200">
+<img class="w-full h-full object-cover" data-alt="Fresh Mexican green key limes with shiny skin and water droplets in a basket, authentic food market background, crisp bright daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM5BwrGiB9T7w-nxH_UvKQvh7FGf8hU8Yue9k2GhGMbdHhQ77OhhfhYkbPkpHC7UWcxlvce7GRiqQkmFc9-mOe3xg8xyrS-xtzonpkROiTFmwmc2KpHIq7nM0s-X2giAoREoxYSXnU7uKIwobFvCfd5jSIOSiIcDYTQDx5L--Mi7Jbxlc5FzFjV99X-PTUcN5rAyCYa7gxhuZMyQ69ol9P3i3Ekd3TsGxuJ1O8QfwdebsGkhFT_lQ1"/>
+</div>
+<div class="min-w-0">
+<div class="font-semibold text-slate-900 truncate">Limón con Semilla</div>
+<div class="text-xs text-slate-500 truncate">Fresco de Colima · Por kilo</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center font-label-sm text-label-sm px-2 py-0.5 rounded-md bg-slate-100 text-slate-700">
+                Frutas
+              </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="relative w-28">
+<span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-slate-400">$</span>
+<input class="w-full h-9 pl-6 pr-2.5 border border-slate-200 rounded-md text-sm font-semibold text-slate-900 bg-slate-50 hover:bg-white focus:bg-white focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600/30 transition-all" onchange="notifyPriceChange(this, 'Limón con Semilla')" type="text" value="32.00"/>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<label class="inline-flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="sr-only peer" onchange="toggleProductAvailability(this, 'status-label-4')" type="checkbox"/>
+<div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-600 relative"></div>
+<span class="text-xs font-medium text-emerald-700 flex items-center gap-1" id="status-label-4">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  Activo
+                </span>
+</label>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-xs text-slate-600">
+<span class="material-symbols-outlined text-emerald-600 text-[15px]">smart_toy</span>
+<span>Hoy, 09:24 AM <span class="text-slate-400">(WhatsApp IA)</span></span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="relative inline-block text-left">
+<button class="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors" onclick="toggleDropdownMenu(event, 'menu-4')" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+<div class="hidden absolute right-0 mt-1 w-36 bg-white rounded-lg shadow-lg border border-slate-200 py-1 z-30 text-xs" id="menu-4">
+<button class="w-full text-left px-3 py-1.5 hover:bg-slate-50 flex items-center gap-2 text-slate-700" onclick="editProductPrompt('Limón con Semilla')">
+<span class="material-symbols-outlined text-[16px] text-slate-400">edit</span> Editar
+                  </button>
+<button class="w-full text-left px-3 py-1.5 hover:bg-rose-50 flex items-center gap-2 text-rose-600" onclick="deleteProductRow('row-4')">
+<span class="material-symbols-outlined text-[16px]">delete</span> Eliminar
+                  </button>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 5: Papa Blanca Alpha (Agotado) -->
+<tr class="hover:bg-slate-50/70 transition-colors group bg-slate-50/30" data-category="Tubérculos" data-status="out" id="row-5">
+<td class="py-3.5 px-4 text-center">
+<input class="row-checkbox w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer align-middle" onchange="updateSelectionBar()" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-200 opacity-60">
+<img class="w-full h-full object-cover" data-alt="Clean washed pale alpha potatoes grouped closely, soft ambient studio kitchen lighting, high texture detail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvGqb84GH70HS1lmQz_9SebcfBdVhvlzsqsH5RF-E7iD4jv_Pffj1K9hIvKlP1m_Mjx0YYVhTWEugUcN5SKcYa3orly7rq98qlzsOKxp2Pz5pqYAn73PmrhakonhYNQPO57S1dz1SNEIXgqLyq3PVfWaP1-5hs-EPeO0oPM1BuhMm4ooifBzSq0vT3Yk8y2vEL3lsp50Wh46IUCZr2pyLyWlh0PsPJJH-ABEg-faHmoVb63XrZvg_G"/>
+</div>
+<div class="min-w-0">
+<div class="font-semibold text-slate-500 truncate">Papa Blanca Alpha</div>
+<div class="text-xs text-slate-400 truncate">Lavada · Por kilo</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center font-label-sm text-label-sm px-2 py-0.5 rounded-md bg-slate-100 text-slate-700">
+                Tubérculos
+              </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="relative w-28">
+<span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-slate-400">$</span>
+<input class="w-full h-9 pl-6 pr-2.5 border border-slate-200 rounded-md text-sm font-semibold text-slate-600 bg-slate-50 hover:bg-white focus:bg-white focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600/30 transition-all" onchange="notifyPriceChange(this, 'Papa Blanca Alpha')" type="text" value="28.00"/>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<label class="inline-flex items-center gap-2 cursor-pointer select-none">
+<input class="sr-only peer" onchange="toggleProductAvailability(this, 'status-label-5')" type="checkbox"/>
+<div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-600 relative"></div>
+<span class="text-xs font-medium text-slate-400 flex items-center gap-1" id="status-label-5">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+                  Agotado
+                </span>
+</label>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-xs text-slate-500">
+<span class="material-symbols-outlined text-slate-400 text-[15px]">schedule</span>
+<span>Ayer, 04:15 PM</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="relative inline-block text-left">
+<button class="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors" onclick="toggleDropdownMenu(event, 'menu-5')" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+<div class="hidden absolute right-0 mt-1 w-36 bg-white rounded-lg shadow-lg border border-slate-200 py-1 z-30 text-xs" id="menu-5">
+<button class="w-full text-left px-3 py-1.5 hover:bg-slate-50 flex items-center gap-2 text-slate-700" onclick="editProductPrompt('Papa Blanca Alpha')">
+<span class="material-symbols-outlined text-[16px] text-slate-400">edit</span> Editar
+                  </button>
+<button class="w-full text-left px-3 py-1.5 hover:bg-rose-50 flex items-center gap-2 text-rose-600" onclick="deleteProductRow('row-5')">
+<span class="material-symbols-outlined text-[16px]">delete</span> Eliminar
+                  </button>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 6: Cilantro Criollo -->
+<tr class="hover:bg-slate-50/70 transition-colors group" data-category="Hierbas" data-status="active" id="row-6">
+<td class="py-3.5 px-4 text-center">
+<input class="row-checkbox w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer align-middle" onchange="updateSelectionBar()" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-200">
+<img class="w-full h-full object-cover" data-alt="Freshly harvested bright green aromatic cilantro herb bunch tied with natural fiber string, crisp roots visible, authentic market bench background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzdg64YsCJr-oJxV9sCCHVhgcU0WWIJpf3jOeJ9MpQA6L3IuClnGOwXwvQGsiPKvC85EQkdnZc9fKmkV7vI3YnWEJtQltqUrknlpuDPtuweQFVJW_4AOpbMpEp868v6lqTnhA5qLA33LElM-VJ_q6jtHaYq5_xEkor1KXbseOl8iY1gNuC_QE9yXQ7Q328cklUUYZkyyElCkvc9i8YYrQCUxT7HYcT00SWmvnpv8VBWJ3qrw8QNpg1"/>
+</div>
+<div class="min-w-0">
+<div class="font-semibold text-slate-900 truncate">Cilantro Criollo</div>
+<div class="text-xs text-slate-500 truncate">Chinampas Xochimilco · Por manojo</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center font-label-sm text-label-sm px-2 py-0.5 rounded-md bg-slate-100 text-slate-700">
+                Hierbas
+              </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="relative w-28">
+<span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-slate-400">$</span>
+<input class="w-full h-9 pl-6 pr-2.5 border border-slate-200 rounded-md text-sm font-semibold text-slate-900 bg-slate-50 hover:bg-white focus:bg-white focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600/30 transition-all" onchange="notifyPriceChange(this, 'Cilantro Criollo')" type="text" value="10.00"/>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<label class="inline-flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="sr-only peer" onchange="toggleProductAvailability(this, 'status-label-6')" type="checkbox"/>
+<div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-600 relative"></div>
+<span class="text-xs font-medium text-emerald-700 flex items-center gap-1" id="status-label-6">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  Activo
+                </span>
+</label>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-xs text-slate-600">
+<span class="material-symbols-outlined text-slate-400 text-[15px]">schedule</span>
+<span>Hoy, 07:45 AM</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="relative inline-block text-left">
+<button class="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors" onclick="toggleDropdownMenu(event, 'menu-6')" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+<div class="hidden absolute right-0 mt-1 w-36 bg-white rounded-lg shadow-lg border border-slate-200 py-1 z-30 text-xs" id="menu-6">
+<button class="w-full text-left px-3 py-1.5 hover:bg-slate-50 flex items-center gap-2 text-slate-700" onclick="editProductPrompt('Cilantro Criollo')">
+<span class="material-symbols-outlined text-[16px] text-slate-400">edit</span> Editar
+                  </button>
+<button class="w-full text-left px-3 py-1.5 hover:bg-rose-50 flex items-center gap-2 text-rose-600" onclick="deleteProductRow('row-6')">
+<span class="material-symbols-outlined text-[16px]">delete</span> Eliminar
+                  </button>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 7: Plátano Dominico (Agotado) -->
+<tr class="hover:bg-slate-50/70 transition-colors group bg-slate-50/30" data-category="Frutas" data-status="out" id="row-7">
+<td class="py-3.5 px-4 text-center">
+<input class="row-checkbox w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer align-middle" onchange="updateSelectionBar()" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-200 opacity-60">
+<img class="w-full h-full object-cover" data-alt="Small sweet Mexican Dominico miniature bananas in a cluster, vibrant yellow peel with subtle brown flecks, clean market photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn5GiU-qegAGazFKdAf8jTShCOSDGsOooJ9QYCiQoGKyETEFRgye-ZwCN4Uq1Ve8zxm52H1HPZJKuo9Z-Wxkd_wPc7GszveQ175LKlp-93P00ImWjttEvGdVqjrX4v6iYnCdfQW3R38R2Jwh2JgT5lCmeBWYqL4LymHVXHPB-21DnOnwxmd6Zh1FSd6XN_cEHnwfSvegN9Ub9WBxj_ouDvQB0ACrTNM_o4CjOk3Bgs9JKZtADmbLGz"/>
+</div>
+<div class="min-w-0">
+<div class="font-semibold text-slate-500 truncate">Plátano Dominico</div>
+<div class="text-xs text-slate-400 truncate">Chiapas · Por penca</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center font-label-sm text-label-sm px-2 py-0.5 rounded-md bg-slate-100 text-slate-700">
+                Frutas
+              </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="relative w-28">
+<span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-slate-400">$</span>
+<input class="w-full h-9 pl-6 pr-2.5 border border-slate-200 rounded-md text-sm font-semibold text-slate-600 bg-slate-50 hover:bg-white focus:bg-white focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600/30 transition-all" onchange="notifyPriceChange(this, 'Plátano Dominico')" type="text" value="22.00"/>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<label class="inline-flex items-center gap-2 cursor-pointer select-none">
+<input class="sr-only peer" onchange="toggleProductAvailability(this, 'status-label-7')" type="checkbox"/>
+<div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-600 relative"></div>
+<span class="text-xs font-medium text-slate-400 flex items-center gap-1" id="status-label-7">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+                  Agotado
+                </span>
+</label>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-xs text-slate-500">
+<span class="material-symbols-outlined text-slate-400 text-[15px]">history</span>
+<span>Hace 2 días</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="relative inline-block text-left">
+<button class="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors" onclick="toggleDropdownMenu(event, 'menu-7')" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+<div class="hidden absolute right-0 mt-1 w-36 bg-white rounded-lg shadow-lg border border-slate-200 py-1 z-30 text-xs" id="menu-7">
+<button class="w-full text-left px-3 py-1.5 hover:bg-slate-50 flex items-center gap-2 text-slate-700" onclick="editProductPrompt('Plátano Dominico')">
+<span class="material-symbols-outlined text-[16px] text-slate-400">edit</span> Editar
+                  </button>
+<button class="w-full text-left px-3 py-1.5 hover:bg-rose-50 flex items-center gap-2 text-rose-600" onclick="deleteProductRow('row-7')">
+<span class="material-symbols-outlined text-[16px]">delete</span> Eliminar
+                  </button>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 8: Chile Serrano -->
+<tr class="hover:bg-slate-50/70 transition-colors group" data-category="Chiles y Semillas" data-status="active" id="row-8">
+<td class="py-3.5 px-4 text-center">
+<input class="row-checkbox w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer align-middle" onchange="updateSelectionBar()" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-200">
+<img class="w-full h-full object-cover" data-alt="Glossy dark green Mexican serrano peppers arranged neatly on brown paper in traditional market stall, vibrant culinary ingredient photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD19wmCPxnGl5Gwt-Zl-vuDUbz2OTQFB8Uv1Pt7nrGOE4yUrAODmRR6OXfcm07O7vvC1dXnVdMbTa3Ffuhs1PQPbGnZIsdpQDgOgPLhxDvGHMwiaZdE4fiCznDE1d3MJ3O517l0DqebMI4QZbeo2zr1UEPW_KD-AzkgNCArNYKtJowdP2ZDPojBq6MCqlKHpL7JDJttcQKFGQucULGcWFjpCHfHt0gpzCfTt1PE8focOs2Zx2k_kQjJ"/>
+</div>
+<div class="min-w-0">
+<div class="font-semibold text-slate-900 truncate">Chile Serrano</div>
+<div class="text-xs text-slate-500 truncate">Picoso seleccionado · Por 250g</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center font-label-sm text-label-sm px-2 py-0.5 rounded-md bg-slate-100 text-slate-700">
+                Chiles y Semillas
+              </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="relative w-28">
+<span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-slate-400">$</span>
+<input class="w-full h-9 pl-6 pr-2.5 border border-slate-200 rounded-md text-sm font-semibold text-slate-900 bg-slate-50 hover:bg-white focus:bg-white focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600/30 transition-all" onchange="notifyPriceChange(this, 'Chile Serrano')" type="text" value="14.00"/>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<label class="inline-flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="sr-only peer" onchange="toggleProductAvailability(this, 'status-label-8')" type="checkbox"/>
+<div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-600 relative"></div>
+<span class="text-xs font-medium text-emerald-700 flex items-center gap-1" id="status-label-8">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  Activo
+                </span>
+</label>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-xs text-slate-600">
+<span class="material-symbols-outlined text-emerald-600 text-[15px]">smart_toy</span>
+<span>Hoy, 09:24 AM <span class="text-slate-400">(WhatsApp IA)</span></span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="relative inline-block text-left">
+<button class="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors" onclick="toggleDropdownMenu(event, 'menu-8')" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+<div class="hidden absolute right-0 mt-1 w-36 bg-white rounded-lg shadow-lg border border-slate-200 py-1 z-30 text-xs" id="menu-8">
+<button class="w-full text-left px-3 py-1.5 hover:bg-slate-50 flex items-center gap-2 text-slate-700" onclick="editProductPrompt('Chile Serrano')">
+<span class="material-symbols-outlined text-[16px] text-slate-400">edit</span> Editar
+                  </button>
+<button class="w-full text-left px-3 py-1.5 hover:bg-rose-50 flex items-center gap-2 text-rose-600" onclick="deleteProductRow('row-8')">
+<span class="material-symbols-outlined text-[16px]">delete</span> Eliminar
+                  </button>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Empty State if filters clear all -->
+<div class="hidden py-12 text-center" id="emptyTableMessage">
+<div class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 mx-auto flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-[24px]">search_off</span>
+</div>
+<p class="font-label-md text-label-md text-slate-800">No se encontraron productos</p>
+<p class="font-body-sm text-body-sm text-slate-400 mt-1">Prueba cambiando los filtros o la búsqueda.</p>
+</div>
+</div>
+<!-- Shadcn Pagination Controls -->
+<div class="bg-white border border-slate-200 rounded-b-xl px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 shadow-sm border-t-0">
+<!-- Left text counter -->
+<div class="flex items-center gap-2 font-medium">
+<span>Mostrando <span class="text-slate-900 font-semibold">1</span> a <span class="text-slate-900 font-semibold">8</span> de <span class="text-slate-900 font-semibold">45</span> productos</span>
+<span class="hidden md:inline text-slate-300">|</span>
+<span class="hidden md:inline text-emerald-600 font-medium">38 activos</span>
+<span class="hidden md:inline text-slate-300">·</span>
+<span class="hidden md:inline text-slate-400">7 agotados</span>
+</div>
+<!-- Right Controls -->
+<div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+<!-- Rows per page selector -->
+<div class="flex items-center gap-2">
+<span class="text-slate-500 hidden sm:inline">Filas por página:</span>
+<select class="h-8 px-2 text-xs bg-slate-50 border border-slate-200 rounded-md text-slate-700 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+<option selected="">10</option>
+<option>25</option>
+<option>50</option>
+</select>
+</div>
+<!-- Page Numbers Stack -->
+<div class="flex items-center gap-1">
+<button class="h-8 px-2.5 rounded-md border border-slate-200 bg-slate-50 text-slate-300 cursor-not-allowed flex items-center gap-1 font-medium" disabled="">
+<span class="material-symbols-outlined text-[14px]">chevron_left</span>
+<span class="hidden sm:inline">Anterior</span>
+</button>
+<button class="h-8 w-8 rounded-md bg-indigo-600 text-white font-semibold text-xs shadow-xs">1</button>
+<button class="h-8 w-8 rounded-md hover:bg-slate-100 text-slate-700 font-medium text-xs transition-colors">2</button>
+<button class="h-8 w-8 rounded-md hover:bg-slate-100 text-slate-700 font-medium text-xs transition-colors">3</button>
+<span class="text-slate-400 px-1">...</span>
+<button class="h-8 w-8 rounded-md hover:bg-slate-100 text-slate-700 font-medium text-xs transition-colors">5</button>
+<button class="h-8 px-2.5 rounded-md border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 flex items-center gap-1 font-medium transition-colors">
+<span class="hidden sm:inline">Siguiente</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Toast Notification Alert (Bottom Right) -->
+<div class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl flex items-center gap-3 transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none" id="toastNotification">
+<span class="material-symbols-outlined text-[20px] text-emerald-400" id="toastIcon">check_circle</span>
+<div class="text-xs">
+<p class="font-semibold text-white" id="toastTitle">Actualizado</p>
+<p class="text-slate-300" id="toastBody">El precio ha sido guardado exitosamente.</p>
+</div>
+</div>
+<!-- WhatsApp Sync Info Drawer / Bottom Info Banner -->
+<div class="mt-space-lg p-space-md rounded-xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row items-start md:items-center justify-between gap-space-sm text-xs text-slate-600">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">cell_tower</span>
+</div>
+<div>
+<p class="font-semibold text-slate-900">¿Sabías que puedes actualizar precios hablando por nota de voz?</p>
+<p class="text-slate-500">Envía un audio como <span class="italic text-slate-700">"El jitomate subió a $28 y no me queda papa"</span> a tu asistente y este panel se actualizará solo.</p>
+</div>
+</div>
+<a class="text-indigo-600 hover:text-indigo-800 font-semibold flex items-center gap-1 flex-shrink-0" href="#">
+<span>Configurar número</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<script>
+  // Close any open dropdown menus when clicking outside
+  document.addEventListener('click', function(event) {
+    if (!event.target.closest('.relative')) {
+      document.querySelectorAll('[id^="menu-"]').forEach(menu => {
+        menu.classList.add('hidden');
+      });
+    }
+  });
+
+  function toggleDropdownMenu(e, menuId) {
+    e.stopPropagation();
+    document.querySelectorAll('[id^="menu-"]').forEach(menu => {
+      if (menu.id !== menuId) menu.classList.add('hidden');
+    });
+    const menu = document.getElementById(menuId);
+    if (menu) {
+      menu.classList.toggle('hidden');
+    }
+  }
+
+  function showToast(title, body, isSuccess = true) {
+    const toast = document.getElementById('toastNotification');
+    const toastTitle = document.getElementById('toastTitle');
+    const toastBody = document.getElementById('toastBody');
+    const toastIcon = document.getElementById('toastIcon');
+
+    toastTitle.textContent = title;
+    toastBody.textContent = body;
+    toastIcon.textContent = isSuccess ? 'check_circle' : 'info';
+    toastIcon.className = `material-symbols-outlined text-[20px] ${isSuccess ? 'text-emerald-400' : 'text-indigo-400'}`;
+
+    toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+    setTimeout(() => {
+      toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+    }, 3200);
+  }
+
+  function notifyPriceChange(inputElement, productName) {
+    const rawVal = inputElement.value.replace('$', '').trim();
+    showToast('Precio Modificado', `${productName} ajustado a $${rawVal} MXN`);
+  }
+
+  function toggleProductAvailability(toggleInput, labelId) {
+    const label = document.getElementById(labelId);
+    const row = toggleInput.closest('tr');
+    if (toggleInput.checked) {
+      label.className = "text-xs font-medium text-emerald-700 flex items-center gap-1";
+      label.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Activo`;
+      row.setAttribute('data-status', 'active');
+      row.classList.remove('bg-slate-50/30');
+      const imgWrap = row.querySelector('td:nth-child(2) .relative');
+      if (imgWrap) imgWrap.classList.remove('opacity-60');
+      const title = row.querySelector('td:nth-child(2) .font-semibold');
+      if (title) {
+        title.classList.remove('text-slate-500');
+        title.classList.add('text-slate-900');
+      }
+      showToast('Disponibilidad', 'Producto activado para el catálogo público');
+    } else {
+      label.className = "text-xs font-medium text-slate-400 flex items-center gap-1";
+      label.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span> Agotado`;
+      row.setAttribute('data-status', 'out');
+      row.classList.add('bg-slate-50/30');
+      const imgWrap = row.querySelector('td:nth-child(2) .relative');
+      if (imgWrap) imgWrap.classList.add('opacity-60');
+      const title = row.querySelector('td:nth-child(2) .font-semibold');
+      if (title) {
+        title.classList.remove('text-slate-900');
+        title.classList.add('text-slate-500');
+      }
+      showToast('Disponibilidad', 'Marcado como Agotado en Mercado Medellín', false);
+    }
+  }
+
+  function deleteProductRow(rowId) {
+    const row = document.getElementById(rowId);
+    if (row && confirm('¿Estás seguro de que deseas eliminar este producto del inventario?')) {
+      row.remove();
+      showToast('Producto Eliminado', 'Se ha retirado de tu lista');
+      updateSelectionBar();
+    }
+  }
+
+  function editProductPrompt(name) {
+    const newPrice = prompt(`Editar precio rápido para "${name}":`, "25.00");
+    if (newPrice) {
+      showToast('Producto Actualizado', `${name} guardado correctamente`);
+    }
+  }
+
+  function duplicateProduct(name) {
+    showToast('Producto Duplicado', `Se creó una copia de ${name}`);
+  }
+
+  function openNewProductModal() {
+    const name = prompt('Nombre del nuevo producto:', '');
+    if (name) {
+      showToast('Producto Creado', `Se agregó "${name}" al inventario en borrador.`);
+    }
+  }
+
+  // Live filter handlers
+  function handleSearch(query) {
+    applyAllFilters();
+  }
+
+  function filterByCategory(val) {
+    applyAllFilters();
+  }
+
+  function filterByStatus(val) {
+    applyAllFilters();
+  }
+
+  function applyAllFilters() {
+    const searchVal = document.getElementById('productSearchInput').value.toLowerCase().trim();
+    const catVal = document.getElementById('categoryFilterSelect').value;
+    const statusVal = document.getElementById('statusFilterSelect').value;
+
+    const rows = document.querySelectorAll('#productsTable tbody tr');
+    let visibleCount = 0;
+
+    rows.forEach(row => {
+      const text = row.innerText.toLowerCase();
+      const category = row.getAttribute('data-category');
+      const status = row.getAttribute('data-status');
+
+      const matchesSearch = !searchVal || text.includes(searchVal);
+      const matchesCat = (catVal === 'all') || (category === catVal);
+      const matchesStatus = (statusVal === 'all') || (status === statusVal);
+
+      if (matchesSearch && matchesCat && matchesStatus) {
+        row.style.display = '';
+        visibleCount++;
+      } else {
+        row.style.display = 'none';
+      }
+    });
+
+    const empty = document.getElementById('emptyTableMessage');
+    if (visibleCount === 0) {
+      empty.classList.remove('hidden');
+    } else {
+      empty.classList.add('hidden');
+    }
+  }
+
+  // WhatsApp Sync simulated trigger
+  function triggerWhatsAppSync(btn) {
+    const label = document.getElementById('syncBtnLabel');
+    const originalText = label.textContent;
+    btn.disabled = true;
+    label.textContent = "Consultando audio...";
+    btn.classList.add('opacity-75');
+
+    setTimeout(() => {
+      label.textContent = "¡Inventario al día!";
+      btn.classList.remove('opacity-75');
+      btn.disabled = false;
+      showToast('Sincronización Exitosa', '2 precios actualizados desde los audios recibidos');
+      setTimeout(() => {
+        label.textContent = originalText;
+      }, 2500);
+    }, 1200);
+  }
+
+  // Export to CSV simulation
+  function exportToCSV() {
+    showToast('Descarga iniciada', 'Generando canasta_inventario_medellin.csv', false);
+  }
+
+  // Selection Logic
+  function toggleSelectAll(masterCheckbox) {
+    const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+    rowCheckboxes.forEach(cb => {
+      if (cb.closest('tr').style.display !== 'none') {
+        cb.checked = masterCheckbox.checked;
+      }
+    });
+    updateSelectionBar();
+  }
+
+  function updateSelectionBar() {
+    const selected = document.querySelectorAll('.row-checkbox:checked').length;
+    const bar = document.getElementById('selectionActionBar');
+    const countBadge = document.getElementById('selectedCountBadge');
+
+    if (selected > 0) {
+      bar.classList.remove('hidden');
+      countBadge.textContent = selected;
+    } else {
+      bar.classList.add('hidden');
+      const master = document.getElementById('selectAllCheckbox');
+      if (master) master.checked = false;
+    }
+  }
+
+  function clearSelection() {
+    document.querySelectorAll('.row-checkbox').forEach(cb => cb.checked = false);
+    const master = document.getElementById('selectAllCheckbox');
+    if (master) master.checked = false;
+    updateSelectionBar();
+  }
+
+  function markSelectedStatus(isActive) {
+    const selectedCheckboxes = document.querySelectorAll('.row-checkbox:checked');
+    selectedCheckboxes.forEach(cb => {
+      const row = cb.closest('tr');
+      const toggle = row.querySelector('input[type="checkbox"].peer');
+      if (toggle && toggle.checked !== isActive) {
+        toggle.checked = isActive;
+        const labelId = toggle.getAttribute('onchange').match(/'([^']+)'/)[1];
+        toggleProductAvailability(toggle, labelId);
+      }
+    });
+    clearSelection();
+    showToast('Lote actualizado', `Se actualizaron ${selectedCheckboxes.length} productos.`);
+  }
+</script></main></div></body></html>

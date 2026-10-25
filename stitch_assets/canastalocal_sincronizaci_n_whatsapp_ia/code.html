@@ -1,0 +1,504 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-dim":"#d2d9f4","tertiary-container":"#ba5551","on-primary-fixed":"#002114","primary":"#006948","on-primary":"#ffffff","secondary-fixed":"#ffdbca","on-secondary":"#ffffff","on-surface":"#131b2e","error-container":"#ffdad6","on-tertiary":"#ffffff","on-secondary-fixed":"#341100","surface-tint":"#006c4a","surface-variant":"#dae2fd","secondary":"#9d4300","surface":"#faf8ff","tertiary":"#9b3e3b","secondary-container":"#fd761a","primary-fixed-dim":"#68dba9","tertiary-fixed-dim":"#ffb3ae","inverse-surface":"#283044","on-tertiary-container":"#fffbff","primary-fixed":"#85f8c4","surface-container-low":"#f2f3ff","surface-bright":"#faf8ff","on-primary-container":"#f5fff7","on-tertiary-fixed":"#410004","background":"#faf8ff","tertiary-fixed":"#ffdad7","secondary-fixed-dim":"#ffb690","on-background":"#131b2e","on-surface-variant":"#3d4a42","surface-container":"#eaedff","error":"#ba1a1a","on-secondary-container":"#5c2400","outline-variant":"#bccac0","on-primary-fixed-variant":"#005137","on-error-container":"#93000a","inverse-on-surface":"#eef0ff","surface-container-lowest":"#ffffff","on-error":"#ffffff","outline":"#6d7a72","on-tertiary-fixed-variant":"#7f2928","inverse-primary":"#68dba9","surface-container-high":"#e2e7ff","primary-container":"#00855d","surface-container-highest":"#dae2fd","on-secondary-fixed-variant":"#783200"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","gutter-mobile":"1rem","space-xl":"2rem","space-xs":"0.25rem","margin-mobile":"1rem","space-lg":"1.5rem","space-md":"1rem","margin":"2rem","gutter":"1.5rem"},"fontFamily":{"label-md":["Plus Jakarta Sans"],"display-mobile":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"display":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"]},"fontSize":{"label-md":["0.875rem",{"lineHeight":"1","letterSpacing":"0.01em","fontWeight":"600"}],"display-mobile":["2.25rem",{"lineHeight":"1.15","letterSpacing":"-0.025em","fontWeight":"800"}],"headline-sm":["1.25rem",{"lineHeight":"1.35","letterSpacing":"-0.01em","fontWeight":"700"}],"body-sm":["0.8125rem",{"lineHeight":"1.45","letterSpacing":"0em","fontWeight":"400"}],"headline-md":["1.5rem",{"lineHeight":"1.3","letterSpacing":"-0.015em","fontWeight":"700"}],"headline-lg":["2.25rem",{"lineHeight":"1.2","letterSpacing":"-0.02em","fontWeight":"800"}],"body-lg":["1.125rem",{"lineHeight":"1.6","letterSpacing":"-0.01em","fontWeight":"400"}],"label-sm":["0.75rem",{"lineHeight":"1","letterSpacing":"0.02em","fontWeight":"600"}],"display":["3.5rem",{"lineHeight":"1.1","letterSpacing":"-0.03em","fontWeight":"800"}],"headline-lg-mobile":["1.75rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"800"}],"body-md":["0.9375rem",{"lineHeight":"1.5","letterSpacing":"0em","fontWeight":"400"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="px-space-lg pt-space-lg pb-space-md"><div class="flex items-center gap-space-sm mb-space-md"><div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[20px]">storefront</span></div><div><span class="font-label-md text-label-md text-on-surface tracking-tight block">CanastaLocal</span><span class="font-label-sm text-label-sm text-primary font-bold">Negocios</span></div></div><div class="p-space-sm bg-surface-container-low rounded-xl flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant font-bold text-xs">DM</div><div class="flex-1 min-w-0"><p class="font-label-md text-label-md text-on-surface truncate">Doña Mary</p><p class="font-body-sm text-body-sm text-on-surface-variant truncate">Puesto #24 · Medellín</p></div></div></div><nav class="flex flex-col gap-1 px-space-md mt-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-bold shadow-xs"><a class="flex items-center gap-space-sm px-3 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all text-sm font-medium" data-path="dashboard-principal" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Dashboard Principal</span></a><a aria-current="page" class="flex items-center justify-between px-3 py-2 rounded-xl transition-all bg-primary-container text-on-primary-container font-bold shadow-xs" data-path="sincronizacion-whatsapp-ia" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">chat</span><span>WhatsApp IA</span></div><span class="inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-primary-fixed text-on-primary-fixed-variant">IA Activa</span></a><a class="flex items-center gap-space-sm px-3 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all text-sm font-medium" data-path="inventario-de-productos" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span>Inventario de Productos</span></a><a class="flex items-center gap-space-sm px-3 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all text-sm font-medium" data-path="ventas-y-pedidos" href="#"><span class="material-symbols-outlined text-[20px]">shopping_bag</span><span>Ventas y Pedidos</span></a><a class="flex items-center gap-space-sm px-3 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all text-sm font-medium" data-path="ajustes-del-puesto" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Ajustes del Puesto</span></a></nav></div><div class="p-space-md border-t border-surface-container-high bg-surface-container-lowest"><div class="p-space-sm bg-surface-container-low rounded-xl mb-space-sm flex items-center justify-between"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface-variant">En Línea · Puesto 24</span></div></div><a class="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all text-xs font-medium mb-1" data-path="tienda-publica" href="#"><span>Ver puesto público</span><span class="material-symbols-outlined text-[16px]">open_in_new</span></a><a class="flex items-center gap-2 px-3 py-2 rounded-lg text-tertiary hover:bg-surface-container-high transition-all text-xs font-medium" data-path="login" href="#"><span class="material-symbols-outlined text-[16px]">logout</span><span>Cambiar / Cerrar sesión</span></a></div></aside><div class="pl-64 min-h-screen flex flex-col"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-sm"><span class="font-label-sm text-label-sm text-on-surface-variant">CanastaLocal</span><span class="text-outline text-xs">/</span><span class="font-label-sm text-label-sm text-on-surface font-semibold">Panel de Control</span></div><div class="flex items-center gap-space-md"><a class="hidden sm:flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm text-label-sm transition-colors" data-path="tienda-publica" href="#"><span class="material-symbols-outlined text-[16px]">store</span><span>Puesto Público</span></a><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary-container"></span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-16 bg-surface flex-1 w-full max-w-7xl mx-auto px-space-lg py-space-lg"><div class="flex flex-col w-full">
+<!-- Screen Header -->
+<section class="flex flex-col md:flex-row md:items-center justify-between gap-space-md mb-space-lg">
+<div class="max-w-2xl">
+<div class="flex items-center gap-space-xs mb-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-primary-fixed text-on-primary-fixed-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+          Motor Whisper + Gemini 1.5 Pro
+        </span>
+<span class="text-on-surface-variant/40 text-xs">•</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Versión 2.4</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+        Sincronización por Inteligencia Artificial (WhatsApp)
+      </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+        Historial en vivo de actualizaciones de precios e inventario procesadas automáticamente mediante notas de voz y mensajes de WhatsApp.
+      </p>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-2.5 self-start md:self-auto shrink-0">
+<button class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-surface-container-lowest text-on-surface hover:bg-surface-container-low transition-all shadow-sm font-label-md text-label-md active:scale-95" id="btn-refresh" type="button">
+<span class="material-symbols-outlined text-[18px] transition-transform duration-500" id="refresh-icon">sync</span>
+<span>Refrescar registros</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-on-primary hover:bg-primary-container transition-all shadow-sm font-label-md text-label-md active:scale-95" id="btn-test-message" type="button">
+<span class="material-symbols-outlined text-[18px]">send</span>
+<span>Enviar mensaje de prueba</span>
+</button>
+</div>
+</section>
+<!-- Live Connection Alert / Guidance Banner -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md md:p-space-lg mb-space-lg shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-space-md relative overflow-hidden">
+<div class="absolute -right-16 -top-16 w-48 h-48 bg-primary/5 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start sm:items-center gap-3.5 relative z-10">
+<div class="w-12 h-12 rounded-2xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed-variant shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[26px]">mark_chat_unread</span>
+</div>
+<div>
+<div class="flex items-center gap-2 flex-wrap">
+<p class="font-headline-sm text-headline-sm text-on-surface">
+            Tu número de WhatsApp está conectado al <span class="font-bold text-primary underline decoration-primary/40 underline-offset-4">55-8492-3301</span>
+</p>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-surface-container-low text-primary">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+            Canal activo
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5 max-w-2xl">
+          Reconoce notas de voz de hasta 2 minutos con ruido ambiental de mercado, fotos de pizarras escritas a gis y mensajes de texto informales.
+        </p>
+</div>
+</div>
+<div class="flex items-center gap-2.5 shrink-0 relative z-10">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-fixed/60 text-on-primary-fixed-variant text-label-sm font-label-sm">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span>Escuchando en vivo</span>
+</div>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-sm text-label-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">phonelink_setup</span>
+<span>Configurar número vinculado</span>
+</button>
+</div>
+</div>
+<!-- Live Operations Activity Stream -->
+<section class="flex flex-col gap-space-md mb-space-lg">
+<!-- Stream Controls Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface">
+          Historial de Operaciones en Vivo
+        </h2>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant text-label-sm font-label-sm" id="log-count">
+          4 eventos hoy
+        </span>
+</div>
+<!-- Segmented Category Filters -->
+<div class="flex items-center p-1 rounded-xl bg-surface-container overflow-x-auto" id="filter-tabs">
+<button class="filter-btn px-3 py-1.5 rounded-lg font-label-sm text-label-sm transition-all bg-surface-container-lowest text-on-surface shadow-xs font-bold" data-filter="all" type="button">
+          Todos
+        </button>
+<button class="filter-btn px-3 py-1.5 rounded-lg font-label-sm text-label-sm transition-all text-on-surface-variant hover:text-on-surface" data-filter="audio" type="button">
+          Notas de voz
+        </button>
+<button class="filter-btn px-3 py-1.5 rounded-lg font-label-sm text-label-sm transition-all text-on-surface-variant hover:text-on-surface" data-filter="text" type="button">
+          Textos
+        </button>
+<button class="filter-btn px-3 py-1.5 rounded-lg font-label-sm text-label-sm transition-all text-on-surface-variant hover:text-on-surface" data-filter="image" type="button">
+          Fotos de pizarra
+        </button>
+<button class="filter-btn px-3 py-1.5 rounded-lg font-label-sm text-label-sm transition-all text-on-surface-variant hover:text-on-surface" data-filter="schedule" type="button">
+          Cambios de horario
+        </button>
+</div>
+</div>
+<!-- Timeline List Cards -->
+<div class="flex flex-col gap-space-sm" id="logs-container">
+<!-- Row 1: Voice Note - Price Update -->
+<article class="log-card bg-surface-container-lowest rounded-2xl p-space-md sm:p-space-lg shadow-sm transition-all hover:shadow-md" data-category="audio">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-space-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface">Doña Mary</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">(+52 55 1234 5678)</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-low text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">graphic_eq</span>
+                  Nota de voz (0:08s)
+                </span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Hoy a las 09:24 AM · Procesado en 1.4s</span>
+</div>
+</div>
+<div class="flex items-center gap-2 self-start lg:self-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">check_circle</span>
+              Sincronizado con éxito
+            </span>
+</div>
+</div>
+<!-- Audio Transcript Bubble -->
+<div class="p-3.5 rounded-xl bg-surface-container-low mb-3 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5 shrink-0">record_voice_over</span>
+<div class="min-w-0">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-0.5">Transcripción Whisper AI</p>
+<p class="font-body-md text-body-md text-on-surface italic font-medium">
+              “Ya llegó el limón, lo voy a dar a 30 pesos el kilo”
+            </p>
+</div>
+</div>
+<!-- Terminal Console Badge View -->
+<div class="bg-inverse-surface text-inverse-on-surface p-3.5 rounded-xl font-mono text-xs flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="px-1.5 py-0.5 rounded bg-primary text-on-primary font-semibold text-[11px]">IA Detectó</span>
+<span class="text-primary-fixed-dim">[Producto: Limón con semilla]</span>
+<span class="text-surface-container-highest">[Precio nuevo: $30.00 MXN]</span>
+<span class="text-outline-variant line-through">[Precio anterior: $35.00 MXN]</span>
+<span class="text-secondary-fixed">[Acción: Actualizar precio en catálogo público]</span>
+</div>
+<span class="text-inverse-on-surface/60 text-[11px]">ID: EVT-9821</span>
+</div>
+</article>
+<!-- Row 2: Text Message - Store Status Closed -->
+<article class="log-card bg-surface-container-lowest rounded-2xl p-space-md sm:p-space-lg shadow-sm transition-all hover:shadow-md" data-category="text schedule">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-space-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-on-surface shrink-0">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface">Doña Mary</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">(+52 55 1234 5678)</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">short_text</span>
+                  Mensaje de texto
+                </span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Ayer a las 06:15 PM · Procesado en 0.8s</span>
+</div>
+</div>
+<div class="flex items-center gap-2 self-start lg:self-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">pause_circle</span>
+              Tienda en pausa
+            </span>
+</div>
+</div>
+<!-- Text Message Bubble -->
+<div class="p-3.5 rounded-xl bg-surface-container-low mb-3 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] mt-0.5 shrink-0">sms</span>
+<div class="min-w-0">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-0.5">Mensaje SMS / WhatsApp Directo</p>
+<p class="font-body-md text-body-md text-on-surface font-medium">
+              “Ya cerré el local, hasta mañana temprano Dios mediante”
+            </p>
+</div>
+</div>
+<!-- Terminal Console Badge View -->
+<div class="bg-inverse-surface text-inverse-on-surface p-3.5 rounded-xl font-mono text-xs flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="px-1.5 py-0.5 rounded bg-secondary text-on-secondary font-semibold text-[11px]">IA Detectó</span>
+<span class="text-surface-container-highest">[Acción: Cambiar estado]</span>
+<span class="text-secondary-fixed-dim">[Estado nuevo: Puesto Cerrado]</span>
+<span class="text-primary-fixed-dim">[Horario de reapertura: Mañana 08:00 AM]</span>
+</div>
+<span class="text-inverse-on-surface/60 text-[11px]">ID: EVT-9812</span>
+</div>
+</article>
+<!-- Row 3: Complex Voice Note - Depleted Stock & New Arrivals -->
+<article class="log-card bg-surface-container-lowest rounded-2xl p-space-md sm:p-space-lg shadow-sm transition-all hover:shadow-md" data-category="audio">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-space-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface">Doña Mary</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">(+52 55 1234 5678)</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-low text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">graphic_eq</span>
+                  Nota de voz (0:14s)
+                </span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Ayer a las 01:10 PM · Ruido ambiental filtrado (78%)</span>
+</div>
+</div>
+<div class="flex items-center gap-2 self-start lg:self-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">check_circle</span>
+              Sincronizado con éxito
+            </span>
+</div>
+</div>
+<!-- Audio Transcript Bubble -->
+<div class="p-3.5 rounded-xl bg-surface-container-low mb-3 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5 shrink-0">record_voice_over</span>
+<div class="min-w-0">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-0.5">Transcripción Whisper AI</p>
+<p class="font-body-md text-body-md text-on-surface italic font-medium">
+              “Se me terminó el aguacate criollo pero me llegó papaya maradol bien bonita a 28 pesos el kilo”
+            </p>
+</div>
+</div>
+<!-- Terminal Console Badge View -->
+<div class="bg-inverse-surface text-inverse-on-surface p-3.5 rounded-xl font-mono text-xs flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="px-1.5 py-0.5 rounded bg-primary text-on-primary font-semibold text-[11px]">IA Detectó</span>
+<span class="text-error-container text-on-error-container px-1 rounded">[Producto 1: Aguacate Criollo → Stock: 0 / Agotado]</span>
+<span class="text-primary-fixed">[Producto 2: Papaya Maradol → Precio: $28.00/kg → Activo]</span>
+</div>
+<span class="text-inverse-on-surface/60 text-[11px]">ID: EVT-9799</span>
+</div>
+</article>
+<!-- Row 4: Blackboard Photo with OCR -->
+<article class="log-card bg-surface-container-lowest rounded-2xl p-space-md sm:p-space-lg shadow-sm transition-all hover:shadow-md" data-category="image">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-space-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-highest flex items-center justify-center text-on-surface shrink-0">
+<span class="material-symbols-outlined text-[20px]">photo_camera</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface">Doña Mary</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">(+52 55 1234 5678)</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">image</span>
+                  Foto de pizarra
+                </span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Hace 2 días · Procesamiento multimodal OCR</span>
+</div>
+</div>
+<div class="flex items-center gap-2 self-start lg:self-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">check_circle</span>
+              Sincronizado con éxito
+            </span>
+</div>
+</div>
+<!-- Vision Attachment Card -->
+<div class="p-3.5 rounded-xl bg-surface-container-low mb-3 flex flex-col sm:flex-row sm:items-center gap-4">
+<div class="w-20 h-16 rounded-lg bg-surface-container-highest overflow-hidden shrink-0 relative flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Rustic wooden produce blackboard in a traditional Mexican market with handwritten chalk prices for tomatoes, avocados and limes, soft morning sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrMR3Mf2loOxB_6D-eRBAbLlvEqxxavXwe0YZ7pRxiVkWbiDkworzAv8tVl4zKUAxSTzbAEwomEZzMG4Wb8Do3mVqm_HHtIuImEzgYsJy2HGCzgOPygTlY6YOBhFtFq9qMgF8VkEtAGv6yBPSXNooKUhnBmvjwEa3IGB_GVik2rWBYUo9iC_JtR5vEdILT8myRI6DuS0vpz8-DjEtqxvgHFp3UicmGNrq7qaAmyHP32PIPEqlNc0Li">
+<span class="absolute bottom-1 right-1 bg-inverse-surface/80 text-inverse-on-surface text-[9px] px-1 rounded">JPG</span>
+</div>
+<div class="min-w-0">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-0.5">Captura recibida vía WhatsApp</p>
+<p class="font-body-md text-body-md text-on-surface font-medium">
+              Foto de caballete de madera con lista de 6 precios escritos con tiza blanca y naranja.
+            </p>
+</div>
+</div>
+<!-- Terminal Console Badge View -->
+<div class="bg-inverse-surface text-inverse-on-surface p-3.5 rounded-xl font-mono text-xs flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="px-1.5 py-0.5 rounded bg-primary text-on-primary font-semibold text-[11px]">IA Detectó</span>
+<span class="text-primary-fixed-dim">[OCR Pizarra: 6 productos identificados y actualizados en 4.2 segundos]</span>
+<span class="text-surface-container-highest">[Jitomate $22/kg, Cebolla $18/kg, Papa $26/kg +3 más]</span>
+</div>
+<span class="text-inverse-on-surface/60 text-[11px]">ID: EVT-9750</span>
+</div>
+</article>
+</div>
+</section>
+<!-- Performance Metric Cards Footer -->
+<section class="grid grid-cols-1 sm:grid-cols-3 gap-space-md mt-space-sm">
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed-variant shrink-0">
+<span class="material-symbols-outlined text-[24px]">speech_to_text</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-on-surface font-bold">99.4%</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Precisión en voz y dialectos locales</p>
+</div>
+</div>
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-high flex items-center justify-center text-on-surface shrink-0">
+<span class="material-symbols-outlined text-[24px]">timer</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-on-surface font-bold">1.8 seg</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tiempo promedio de sincronización</p>
+</div>
+</div>
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shrink-0">
+<span class="material-symbols-outlined text-[24px]">published_with_changes</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-on-surface font-bold">48 sincronizaciones</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Realizadas con éxito este mes</p>
+</div>
+</div>
+</section>
+<!-- Modal for Testing Simulated WhatsApp Message -->
+<div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-xs flex items-center justify-center p-4 hidden" id="test-modal">
+<div class="bg-surface-container-lowest rounded-2xl max-w-lg w-full p-space-lg shadow-xl relative animate-in fade-in zoom-in-95 duration-200">
+<div class="flex items-center justify-between pb-space-sm mb-space-md">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center text-on-primary-fixed-variant">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Simular mensaje de WhatsApp</h3>
+</div>
+<button class="p-1 rounded-lg hover:bg-surface-container text-on-surface-variant transition-colors" id="close-modal" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">
+        Prueba cómo interpreta la Inteligencia Artificial una actualización de precios rápida como si fueras Doña Mary.
+      </p>
+<div class="flex flex-col gap-3 mb-space-lg">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Mensaje de entrada simulado</label>
+<div class="relative">
+<textarea class="w-full bg-surface-container-low rounded-xl p-3 font-body-md text-body-md text-on-surface focus:outline-hidden focus:bg-surface-container transition-all" id="simulated-input" placeholder="Ejemplo: Pon el kilo de plátano tabasco a 18 pesos y desactiva las fresas porque llovió..." rows="3">Baja el aguacate hass a 45 pesos y anota que llegaron 10 piñas miel a 35 pesos cada una.</textarea>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Ejemplos rápidos:</span>
+<button class="text-primary hover:underline font-label-sm text-label-sm quick-example" data-text="Cerré por lluvia regreso mañana a las 9 am" type="button">Lluvia/Cierre</button>
+<span class="text-outline-variant">•</span>
+<button class="text-primary hover:underline font-label-sm text-label-sm quick-example" data-text="Subió el jitomate saladet a 32 pesos el kilo" type="button">Subida de precio</button>
+</div>
+</div>
+<div class="flex items-center justify-end gap-2.5">
+<button class="px-4 py-2 rounded-xl bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md transition-colors" id="btn-cancel-modal" type="button">
+          Cancelar
+        </button>
+<button class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md transition-all active:scale-95 shadow-sm" id="btn-process-simulated" type="button">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span>Procesar con IA</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Interactive JavaScript logic -->
+<script>
+    (function initWhatsAppSync() {
+      // Elements
+      const filterTabs = document.querySelectorAll('.filter-btn');
+      const logCards = document.querySelectorAll('.log-card');
+      const refreshBtn = document.getElementById('btn-refresh');
+      const refreshIcon = document.getElementById('refresh-icon');
+      const testMsgBtn = document.getElementById('btn-test-message');
+      const testModal = document.getElementById('test-modal');
+      const closeModal = document.getElementById('close-modal');
+      const cancelModal = document.getElementById('btn-cancel-modal');
+      const processBtn = document.getElementById('btn-process-simulated');
+      const simulatedInput = document.getElementById('simulated-input');
+      const logsContainer = document.getElementById('logs-container');
+      const logCount = document.getElementById('log-count');
+      const quickExamples = document.querySelectorAll('.quick-example');
+
+      // Filter Tab Switcher
+      filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Visual tab update
+          filterTabs.forEach(t => {
+            t.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'shadow-xs', 'font-bold');
+            t.classList.add('text-on-surface-variant');
+          });
+          tab.classList.add('bg-surface-container-lowest', 'text-on-surface', 'shadow-xs', 'font-bold');
+          tab.classList.remove('text-on-surface-variant');
+
+          const filter = tab.getAttribute('data-filter');
+          let visible = 0;
+
+          logCards.forEach(card => {
+            const categories = card.getAttribute('data-category') || '';
+            if (filter === 'all' || categories.includes(filter)) {
+              card.style.display = 'block';
+              visible++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          if (logCount) {
+            logCount.textContent = `${visible} ${visible === 1 ? 'evento' : 'eventos'}`;
+          }
+        });
+      });
+
+      // Quick Examples in Modal
+      quickExamples.forEach(btn => {
+        btn.addEventListener('click', () => {
+          simulatedInput.value = btn.getAttribute('data-text');
+        });
+      });
+
+      // Refresh Button Micro-interaction
+      refreshBtn.addEventListener('click', () => {
+        refreshIcon.classList.add('rotate-180');
+        refreshBtn.classList.add('opacity-75');
+        setTimeout(() => {
+          refreshIcon.classList.remove('rotate-180');
+          refreshBtn.classList.remove('opacity-75');
+        }, 600);
+      });
+
+      // Modal Dialog Actions
+      const openModal = () => testModal.classList.remove('hidden');
+      const hideModal = () => testModal.classList.add('hidden');
+
+      testMsgBtn.addEventListener('click', openModal);
+      closeModal.addEventListener('click', hideModal);
+      cancelModal.addEventListener('click', hideModal);
+      testModal.addEventListener('click', (e) => {
+        if (e.target === testModal) hideModal();
+      });
+
+      // Process Simulated Entry Injection
+      processBtn.addEventListener('click', () => {
+        const text = simulatedInput.value.trim();
+        if (!text) return;
+
+        // Create new log card dynamically
+        const newCard = document.createElement('article');
+        newCard.setAttribute('data-category', 'text');
+        newCard.className = 'log-card bg-surface-container-lowest rounded-2xl p-space-md sm:p-space-lg shadow-sm transition-all hover:shadow-md animate-in fade-in slide-in-from-top-4 duration-300';
+        
+        const now = new Date();
+        const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const randomId = Math.floor(1000 + Math.random() * 9000);
+
+        newCard.innerHTML = `
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-space-sm">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed-variant shrink-0">
+                <span class="material-symbols-outlined text-[20px]">chat</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="font-label-md text-label-md text-on-surface">Simulación (Comerciante)</span>
+                  <span class="text-on-surface-variant font-body-sm text-body-sm">(Prueba en vivo)</span>
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-low text-primary font-label-sm text-label-sm">
+                    <span class="material-symbols-outlined text-[13px]">bolt</span>
+                    Mensaje de prueba
+                  </span>
+                </div>
+                <span class="font-body-sm text-body-sm text-on-surface-variant">Hoy a las ${timeStr} · Procesado en 0.6s</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 self-start lg:self-center">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm">
+                <span class="material-symbols-outlined text-[15px]">check_circle</span>
+                Sincronizado con éxito
+              </span>
+            </div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-surface-container-low mb-3 flex items-start gap-2.5">
+            <span class="material-symbols-outlined text-primary text-[18px] mt-0.5 shrink-0">sms</span>
+            <div class="min-w-0">
+              <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-0.5">Mensaje Procesado</p>
+              <p class="font-body-md text-body-md text-on-surface font-medium">&ldquo;${text}&rdquo;</p>
+            </div>
+          </div>
+          <div class="bg-inverse-surface text-inverse-on-surface p-3.5 rounded-xl font-mono text-xs flex items-center justify-between flex-wrap gap-2">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="px-1.5 py-0.5 rounded bg-primary text-on-primary font-semibold text-[11px]">IA Detectó</span>
+              <span class="text-primary-fixed-dim">[Interpretación de lenguaje natural completada]</span>
+              <span class="text-surface-container-highest">[Acción: Actualización aplicada al catálogo público]</span>
+            </div>
+            <span class="text-inverse-on-surface/60 text-[11px]">ID: SIM-${randomId}</span>
+          </div>
+        `;
+
+        logsContainer.insertBefore(newCard, logsContainer.firstChild);
+        hideModal();
+
+        // Update count
+        const allCards = logsContainer.querySelectorAll('.log-card');
+        if (logCount) {
+          logCount.textContent = `${allCards.length} eventos hoy`;
+        }
+      });
+    })();
+  </script>
+</div></main></div></body></html>

@@ -1,0 +1,13 @@
+services:
+  canastalocal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - VITE_GEMINI_API_KEY=${GEMINI_API_KEY:-${VITE_GEMINI_API_KEY:-}}
+    container_name: canastalocal-cdmx
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production

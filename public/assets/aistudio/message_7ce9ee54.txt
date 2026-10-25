@@ -1,0 +1,128 @@
+Para una solución web orientada a la centralización de mercados y tianguis con soporte *offline-first* y procesamiento de voz para actualización de inventarios, la arquitectura recomendada es una **Arquitectura Hexagonal (Puertos y Adaptadores) organizada como un Monolito Modular**, desplegada en el cliente como una **Progressive Web App (PWA)**.
+
+---
+
+### 1. Patrón de Arquitectura del Sistema
+
+La separación en un monolito modular permite mantener la cohesión del dominio sin incurrir en la latencia de red, la complejidad operativa de despliegue ni la sobrecarga de consenso distribuido propias de los microservicios en etapas tempranas. La lógica de negocio se aísla de los adaptadores de infraestructura (HTTP, bases de datos, APIs de terceros).
+
+```
++---------------------------------------------------------------------------------------+
+|                                    CAPA DE CLIENTE                                    |
+|   PWA (Vite + React + TS) <───> Service Worker (Workbox) <───> IndexedDB (Dexie.js)   |
++---------------------------------------------------------------------------------------+
+                                           │ HTTPS / WSS
+                                           ▼
++---------------------------------------------------------------------------------------+
+|                           API GATEWAY / REVERSE PROXY (Nginx)                         |
++---------------------------------------------------------------------------------------+
+                                           │
+                                           ▼
++---------------------------------------------------------------------------------------+
+|                                  MONOLITO MODULAR                                     |
+|  +-------------------+  +-------------------+  +-----------------------------------+  |
+|  |  Módulo Vendedor  |  |   Módulo Lugar    |  |         Módulo Comprador          |  |
+|  | - Catálogos (SKU) |  | - Croquis 2D      |  | - Carrito multivendedor           |  |
+|  | - Desambiguación  |  | - Polígonos PostGIS| | - Checkout y cobro digital         |  |
+|  +---------┬---------+  +---------┬---------+  +----------------─┬-----------------+  |
+|            │                      │                              │                    |
+|            └──────────────────────┼──────────────────────────────┘                    |
+|                                   ▼                                                   |
+|                  CAPA DE DOMINIO COMÚN / EVENT BUS (In-Memory)                        |
++---------------------------------------------------------------------------------------+
+             │                                              │
+             ▼                                              ▼
++---------------------------+             +---------------------------------------------+
+|    PERSISTENCIA Y CACHÉ   |             |            SERVICIOS ASÍNCRONOS             |
+| - PostgreSQL 16 + PostGIS |             | - Redis 7 (Colas BullMQ)                    |
+| - Redis (Caché de sesión) |             | - Worker NLP/STT (Faster-Whisper + Python)  |
++---------------------------+             +---------------------------------------------+
+
+```
+
+#### Justificación del Patrón
+
+* **Desacoplamiento del Dominio:** Las reglas de validación taxonómica y asignación de cubículos no dependen de frameworks HTTP ni del motor de base de datos.
+* **Transaccionalidad Local:** Permite transacciones ACID nativas entre la reserva de stock de un vendedor y la orden de un comprador sin requerir patrones complejos de compensación como Sagas distribuidas.
+* **Procesamiento Asíncrono Desacoplado:** El tratamiento de señales de audio y llamadas al modelo de lenguaje se delega a trabajadores en segundo plano mediante colas en memoria, protegiendo el hilo principal de atención de solicitudes HTTP.
+
+---
+
+### 2. Stack Tecnológico Específico
+
+| Capa | Componente | Tecnología Seleccionada | Justificación Técnica |
+| --- | --- | --- | --- |
+| **Frontend** | Entorno y Framework | **React 19 + TypeScript (empaquetado con Vite)** | Tipado estricto para las estructuras taxonómicas; menor sobrecarga en tiempo de ejecución en comparación con frameworks con renderizado del lado del servidor (SSR) innecesario para dashboards internos. |
+|  | Renderizado del Croquis | **HTML5 Canvas mediante Konva.js (React-Konva)** | Permite manipular cientos de cubículos interactivos a 60 FPS mediante aceleración por hardware; el DOM estándar de SVG degrada su rendimiento con estructuras altamente anidadas. |
+|  | Almacenamiento Local | **IndexedDB administrado con Dexie.js** | Almacenamiento transaccional en el cliente para el catálogo del vendedor, permitiendo operación *offline-first* sin saturar la cuota de `localStorage`. |
+|  | Ciclo de Vida Offline | **Workbox (Service Workers)** | Estrategias de caché diferenciadas: *Stale-While-Revalidate* para assets estáticos y *Network-First* con *fallback* a IndexedDB para datos transaccionales. |
+|  | Captura de Audio | **Web Audio API + MediaRecorder** | Captura continua de audio en formato comprimido (Opus/WebM a 16 kHz monoaural) para reducir el consumo de ancho de banda celular. |
+| **Backend** | Núcleo de Aplicación | **Node.js (LTS) con NestJS** o **Python (FastAPI)** | *Opción preferente:* **NestJS** por su arquitectura modular nativa, soporte de inyección de dependencias e interfaces estrictas de TypeScript; o **FastAPI** si se prefiere unificar el procesamiento numérico y el servicio API en un solo lenguaje. |
+|  | Pipeline de Voz/NLP | **Faster-Whisper + spaCy / Instructor (Python)** | Ejecutado en un subproceso/servicio interno. Whisper extrae el texto del audio con alta inmunidad a ruido; spaCy/Instructor estructura el JSON contra el esquema Pydantic de la base de datos. |
+| **Datos** | Base de Datos Relacional | **PostgreSQL 16** | Soporte estricto de integridad referencial, transacciones serializables para evitar sobreventas, y soporte nativo de tipos JSONB para propiedades variables de productos. |
+|  | Capa Geoespacial | **Extensión PostGIS** | Indexación espacial (índices R-Tree / GiST) para resolver consultas por polígono geográfico y proximidad euclidiana/geodésica de mercados respecto a la ubicación del comprador. |
+|  | Colas y Estado Rápido | **Redis 7 + BullMQ** | Administración de colas de mensajes con reintentos para transcribir notas de voz y gestionar bloqueos distribuidos temporales (locks de stock) durante el checkout. |
+| **Infraestructura** | Contenedores y Proxy | **Docker + Docker Compose / Nginx** | Aislamiento de procesos y terminación TLS con compresión Gzip/Brotli y proxy inverso para WebSockets. |
+
+---
+
+### 3. Diseño e Implementación de Módulos Críticos
+
+#### A. Renderizado del Croquis Espacial (Konva.js / Canvas)
+
+El mapa de cubículos no debe instanciarse mediante nodos del DOM (`<div>` o `<svg>` extensos), ya que el árbol de renderizado del navegador genera sobrecarga de memoria en dispositivos móviles de gama baja.
+
+* **Modelo de Datos:** Cada cubículo se representa como un vector normalizado: `{ id, x, y, ancho, alto, status: "DISPONIBLE" | "OCUPADO", idVendedor }`.
+* **Cálculo de Coordenadas:** Se establece un lienzo virtual con resolución base (ej. 2048×2048 px). Konva traslada la matriz de transformación para soportar paneo (*drag*) y zoom (*pinch-to-zoom*) conservando la nitidez de los identificadores de cubículo.
+* **Detección de Impacto:** Las selecciones se computan matemáticamente por coordenadas de delimitación rectangular (*AABB - Axis-Aligned Bounding Box*), permitiendo al comprador seleccionar cubículos de recolección de manera instantánea.
+
+#### B. Sincronización Offline-First (Vendedores)
+
+Para tolerar interrupciones de conectividad en vía pública, las mutaciones se aíslan localmente:
+
+1. **Escritura:** Toda modificación de catálogo o venta en efectivo se escribe atómicamente en IndexedDB junto con un campo `sync_status = "PENDING"`, un número de secuencia monótono y una marca de tiempo UTC.
+2. **Cola de Mutaciones:** El Service Worker escucha eventos `online`. Al detectar enlace, lee las operaciones con estado `PENDING` y las transmite en lote por HTTP POST a un endpoint idempotente (`/api/v1/sync/batch`).
+3. **Resolución de Conflictos:** Se implementa control de concurrencia optimista mediante un campo `version` (entero secuencial) por registro. Si la versión local difiere de la base de datos, el servidor prioriza la modificación con el timestamp verificable más reciente (*Last-Write-Wins* parametrizado) o rechaza la venta si el stock disponible en servidor es inferior a cero.
+
+#### C. Pipeline de Desambiguación de Voz
+
+La interacción por voz se ejecuta siguiendo este protocolo determinista:
+
+```
+[Cliente PWA]
+      │  Captura de audio (MediaRecorder, Opus 16kHz)
+      │  POST /api/v1/audio/transcribe
+      ▼
+[API Gateway / NestJS]
+      │  Pusher a cola de Redis (BullMQ)
+      ▼
+[Worker de Procesamiento (Python / Faster-Whisper)]
+      │  1. Transcripción acústica -> String
+      │  2. Inferencia gramatical estructurada -> JSON:
+      │     { "accion": "ACTUALIZAR_PRECIO", "producto_crudo": "manzana", "precio": 35.0, "unidad": "kg" }
+      ▼
+[Servicio de Validación Taxonómica (PostgreSQL)]
+      │  Query: SELECT * FROM catalogo_maestro WHERE unaccent(nombre) ILIKE '%manzana%';
+      │
+      ├─► [Coincidencia Única]
+      │         │
+      │         └─► Ejecuta UPDATE directo en tabla 'productos_vendedor'.
+      │             Retorna HTTP 200 { status: "SUCCESS", item: {...} }
+      │
+      └─► [Múltiples Variedades Encontradas (ej. Gala, Golden, Red Delicious)]
+                │
+                └─► Retorna HTTP 409 { 
+                        status: "AMBIGUITY_DETECTED", 
+                        opciones: [
+                          { "id": 101, "nombre": "Manzana Golden" },
+                          { "id": 102, "nombre": "Manzana Gala" }
+                        ] 
+                    }
+
+```
+
+Si el servidor devuelve el código `AMBIGUITY_DETECTED`, el frontend intercepta la respuesta e interrumpe la persistencia, bloqueando la interfaz para desplegar un diálogo modal táctil o emitir una síntesis de voz (*Web Speech Synthesis API*) requiriendo al comerciante elegir la variedad terminal correspondiente.
+
+---
+
+¿Deseas que desarrolle el esquema de base de datos DDL en PostgreSQL (incluyendo las extensiones PostGIS, tablas de taxonomía jerárquica y llaves foráneas) para este diseño?
