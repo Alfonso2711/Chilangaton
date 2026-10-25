@@ -278,7 +278,7 @@ export const Header: React.FC = () => {
               <button
                 onClick={() => setActiveView('locatario')}
                 className={`px-3 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
-                  activeView === 'locatario'
+                  activeView !== 'whatsapp_bot'
                     ? 'bg-amber-600 text-white shadow-sm'
                     : 'text-slate-700 hover:text-slate-900 hover:bg-slate-100'
                 }`}

@@ -108,6 +108,10 @@ export interface Order {
   customerPhone: string;
   deliveryAddress?: string;
   deliveryFee: number;
+  // Recolección presencial en cubículos (RF-08 / RF-14)
+  pickupToken?: string;
+  notes?: string;
+  cashTendered?: number;
 }
 
 export interface VoiceInventoryParseResult {
@@ -135,7 +139,41 @@ export interface WhatsAppMessage {
   parsedData?: VoiceInventoryParseResult;
 }
 
-export type ActiveAppView = 'comprador' | 'locatario' | 'whatsapp_bot' | 'gobierno_b2g' | 'mercados_mapa' | 'admin_territorial';
+export type ActiveAppView =
+  | 'comprador'
+  | 'locatario'
+  | 'whatsapp_bot'
+  | 'gobierno_b2g'
+  | 'mercados_mapa'
+  | 'admin_territorial'
+  // Cliente
+  | 'mi_canasta' // RF-12: Carrito multivendedor (pantalla completa)
+  | 'croquis_ruteo' // RF-08: Croquis 2D y ruteo de recolección
+  // Vendedor (portal de negocios)
+  | 'vendedor_ia' // Sincronización por IA (historial WhatsApp)
+  | 'vendedor_inventario' // Inventario de productos
+  | 'vendedor_pedidos' // Ventas y pedidos / fichas de recolección
+  | 'vendedor_ajustes'; // Ajustes del puesto e inclusión financiera
+
+/** Vistas permitidas por rol (las usa el guardia de navegación del contexto). */
+export const CLIENTE_VIEWS: ActiveAppView[] = ['comprador', 'mercados_mapa', 'mi_canasta', 'croquis_ruteo'];
+export const VENDEDOR_VIEWS: ActiveAppView[] = [
+  'locatario',
+  'whatsapp_bot',
+  'vendedor_ia',
+  'vendedor_inventario',
+  'vendedor_pedidos',
+  'vendedor_ajustes',
+];
+export const ADMIN_VIEWS: ActiveAppView[] = ['gobierno_b2g', 'admin_territorial'];
+
+/** Estado de cada parada (puesto) dentro de una ficha de recolección. */
+export type StopStatus = 'pendiente' | 'preparando' | 'en_bascula' | 'listo' | 'recolectado' | 'incidencia';
+
+export interface PickupProgress {
+  statuses: Record<string, StopStatus>; // stallId -> estado
+  incidents: Record<string, string>; // stallId -> motivo
+}
 
 export type UserRole = 'admin' | 'cliente' | 'vendedor';
 

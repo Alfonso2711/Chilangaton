@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AppProvider, useApp } from './context/AppContext';
 import { Header } from './components/Header';
 import { LoginView } from './components/LoginView';
 import { MarketplaceView } from './components/MarketplaceView';
 import { MarketsExplorer } from './components/MarketsExplorer';
-import { WhatsAppBotSimulator } from './components/WhatsAppBotSimulator';
-import { LocatarioDashboard } from './components/LocatarioDashboard';
 import { B2GDashboard } from './components/B2GDashboard';
 import { AdminTerritorialView } from './components/AdminTerritorialView';
 import { CartDrawer } from './components/CartDrawer';
 import { StallDetailModal } from './components/StallDetailModal';
+import { MiCanastaView } from './components/MiCanastaView';
+import { CroquisRuteoView } from './components/CroquisRuteoView';
+import { VendorPortal } from './components/vendor/VendorPortal';
+import { VENDEDOR_VIEWS } from './types';
 import {
   Store,
   MapPin,
@@ -18,10 +20,17 @@ import {
   ShieldCheck,
   Heart,
   Users,
+  ShoppingBag,
 } from 'lucide-react';
 
 const MainContent: React.FC = () => {
-  const { currentUser, activeView, setActiveView, selectedStallId, setSelectedStallId } = useApp();
+  const { currentUser, activeView, setActiveView, selectedStallId, setSelectedStallId, cart, setIsCartOpen } = useApp();
+  const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+
+  // Cada cambio de pantalla inicia desde arriba (va antes del return temprano por las reglas de hooks)
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [activeView]);
 
   // If no user is logged in, show the Login screen
   if (!currentUser) {
@@ -48,19 +57,21 @@ const MainContent: React.FC = () => {
             {activeView === 'mercados_mapa' && (
               <MarketsExplorer />
             )}
+            {/* RF-12: Carrito multivendedor en pantalla completa */}
+            {activeView === 'mi_canasta' && (
+              <MiCanastaView />
+            )}
+            {/* RF-08: Croquis 2D y ruteo de recolección en cubículos */}
+            {activeView === 'croquis_ruteo' && (
+              <CroquisRuteoView />
+            )}
           </>
         )}
 
         {/* VENDEDOR VIEWS */}
-        {isVendedor && (
-          <>
-            {activeView === 'locatario' && (
-              <LocatarioDashboard />
-            )}
-            {activeView === 'whatsapp_bot' && (
-              <WhatsAppBotSimulator />
-            )}
-          </>
+        {/* Portal de negocios: Dashboard, WhatsApp IA, Inventario, Ventas y Pedidos, Ajustes */}
+        {isVendedor && VENDEDOR_VIEWS.includes(activeView) && (
+          <VendorPortal />
         )}
 
         {/* ADMIN VIEWS */}
@@ -99,6 +110,22 @@ const MainContent: React.FC = () => {
               <MapPin className="w-4 h-4" />
               <span>Tianguis</span>
             </button>
+
+            {/* Acceso móvil al carrito (en móvil el botón del header queda fuera de pantalla) */}
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className={`relative flex flex-col items-center gap-1 ${
+                activeView === 'mi_canasta' || activeView === 'croquis_ruteo' ? 'text-emerald-700' : 'text-slate-400'
+              }`}
+            >
+              <ShoppingBag className="w-4 h-4" />
+              <span>Canasta</span>
+              {cartCount > 0 && (
+                <span className="absolute -top-1.5 -right-2 min-w-4 h-4 px-1 rounded-full bg-orange-500 text-white text-[9px] font-extrabold flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </button>
           </>
         )}
 
@@ -107,7 +134,7 @@ const MainContent: React.FC = () => {
             <button
               onClick={() => setActiveView('locatario')}
               className={`flex flex-col items-center gap-1 ${
-                activeView === 'locatario' ? 'text-amber-700' : 'text-slate-400'
+                activeView !== 'whatsapp_bot' ? 'text-amber-700' : 'text-slate-400'
               }`}
             >
               <ShieldCheck className="w-4 h-4" />
